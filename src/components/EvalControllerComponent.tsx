@@ -2,6 +2,7 @@ import React from "react";
 import { Answer } from "../types/Answer";
 import { EvalController } from "../types/EvalController";
 import { Question } from "../types/Question";
+import { IntroComponent } from "./IntroComponent";
 import { QuestionComponent } from "./QuestionComponent";
 
 
@@ -21,6 +22,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
     public ready: boolean = false;
     public ended: boolean = false;
     public intro: boolean = true;
+    public introPage: number = 0;
     public questionComponent: JSX.Element | null = null;
     public timeStart: number = 0;
 
@@ -59,6 +61,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
         console.log(t.state)
         let ans = new Answer(
             t.props.evalController.currentAnswerIndex,
+            t.props.evalController.currentAnswerType,
             t.props.evalController.currentAnswerText);
         t.props.evalController.registerAnswer(
             t.state.currentQuestion!,
@@ -75,7 +78,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             this.setState({
                 currentQuestion: q,
                 firstReady: false,
-                ready: true
+                ready: true,
             });
         } else {
             console.log("Quizz ended")
@@ -103,7 +106,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
     render(): React.ReactNode {
         if (this.ready) {
             console.log(this.props.evalController.questions)
-            let q = <QuestionComponent key={"questionComponent" + Date.now()} question={this.state.currentQuestion!} evalController={this.props.evalController!} timeStart={this.timeStart}/>;
+            let q = <QuestionComponent useExplain={false} key={"questionComponent" + Date.now()} question={this.state.currentQuestion!} evalController={this.props.evalController!} timeStart={this.timeStart}/>;
             this.questionComponent = q;
             let divs = <div className="question-main">
                 <div className="question-number">
@@ -117,22 +120,20 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             </div>
                 return divs;
         } else if (this.intro) {
-            console.log("reading intro")
             return <div className="question-main">
-                <div className="question-number">
-                    Evaluation utilisateur sur les méthodes de projections 2D et en grille.
-                </div>
-                <div>
-                    Instructions ....
-                </div>
-                <div className="control-proceed" onClick={() => this.endIntro(this)}>Commencer</div>
+                
+                <IntroComponent master={this}/>
+                {/* <div className="control-proceed" onClick={() => this.endIntro(this)}>Commencer</div> */}
             </div>
         } else if (this.ended) {
             const blob = new Blob([this.props.evalController.getResultsAsString()]);                   // Step 3
             const fileDownloadUrl = URL.createObjectURL(blob);
             return <div className="question-main">
-                <div className="question-number">
-                    Evaluation terminée, merci pour votre participation.
+                <div className="question-text">
+                    Evaluation terminée, merci pour votre participation. <br/><br/>
+                    <div className="red-text"> NE FERMEZ PAS CET ONGLET !</div><br/>
+                    Veuillez maintenant remplir le questionnaire en suivant ce lien : <a href="https://forms.gle/YtbcbCtS8RbNUeou6">https://forms.gle/YtbcbCtS8RbNUeou6</a> <br/>
+                    Votre identifiant est {Date.now()}.
                 </div>
                 <div>
                     <a href={fileDownloadUrl} download={"answers-" + Date.now()}>Télécharger les réponses</a>

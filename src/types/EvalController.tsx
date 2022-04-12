@@ -1,4 +1,4 @@
-import { Answer } from "./Answer";
+import { Answer, AnswerType } from "./Answer";
 import { Question } from "./Question";
 import { QuestionComponent } from "../components/QuestionComponent";
 import { EvalControllerComponent } from "../components/EvalControllerComponent";
@@ -23,6 +23,7 @@ export class EvalController {
     public hasRead: boolean = false;
 
     public currentAnswerIndex = -1;
+    public currentAnswerType = AnswerType.Text;
     public currentAnswerText = "";
     public currentAnswerTime = 0;
     public currentQuestionTimeStart = 0;
@@ -70,7 +71,7 @@ export class EvalController {
     public getResultsAsString() {
         let r = "questionIndex,answerIndex,timeInMs\n";
         this.results.forEach(ans => {
-            r+= ans.question.id + "," + ans.answer.index + "," + ans.time + "\n";
+            r+= ans.question.id + "," + ans.answer.index + "," + ans.answer.label + "," + ans.time + "\n";
         });
         return r;
 
@@ -78,7 +79,7 @@ export class EvalController {
 
     public loadQuestionsFromFile() {
         console.log("reading questions")
-        fetch("./eval-compact.csv")
+        fetch("./eval-q3.csv")
             .then(r => r.text().then(text => {
                 console.log("calling once");
                 this.loadQuestionsFromFileFinish(text, this.evalControllerComponent!);

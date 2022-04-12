@@ -18,10 +18,23 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: black;
+  font-size: 16px;
+}
+
+.App-header .question-number {
+  font-size: 24px;
+  position: absolute;
+  top: 0%;
+  text-align: center;
+
+}
+
+.question-number {
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-link {
@@ -33,11 +46,28 @@
   justify-content: center;
 }
 
+
 .question-answer {
   border: solid #171717;
-  min-width:200px;
-  margin: 5px;
+  vertical-align: middle;
+  max-width:200px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 10px;
   cursor: pointer;
+  text-align: center;
+}
+
+.answer-image {
+  max-width: 65px;
+  max-height: 65px;
+  vertical-align: middle;
+}
+
+.answer-color {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
 
 .keyboard {
@@ -45,15 +75,33 @@
 }
 
 .control-cancel {
+  position: absolute;
   cursor: pointer;
+  left:0px;
+  bottom: 0px;
 }
 
 .control-proceed {
+  position: absolute;
   cursor: pointer;
+  right:0px;
+  bottom: 0px;
 }
 
 .selected {
   background-color: green;
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color:red;
+}
+
+.question-main {
+  padding: 1%;
 }
 
 .control-proceed {
@@ -79,8 +127,22 @@
 
 .question-image img {
   max-width: 512px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .question-answers {
   margin: 25px;
+}
+
+.intro-text {
+  font-size: 16px;
+  text-align: left;
+}
+
+.intro-text img {
+  text-align: justify;
+  width: 512px;
+  margin-left: 15px;
+  margin-right: 15px;
 }

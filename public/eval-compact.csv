@@ -1,3 +1,4 @@
 id:1,type:compare,question:Les distances A et B dans RN sont...,path:./img/q1.jpeg,ans:Similaire,ans:Différents,ans:Très différents
+id:1,type:compare,question:Les distances A et B dans RN sont...,path:./img/q1.jpeg,ans:col~red,ans:col~blue,ans:col~green
 id:2,type:compare,question:Les distances A et B et C dans RN sont...,path:./img/q2.jpeg,ans:Similaire,ans:Différents,ans:Trop différents
 id:3,type:count,question:Combien y a-t-il de mal classifiés dans la projection ?,path:./img/q3.jpeg,ans:Aucun,ans:Entre 1 et 5,ans:Entre 6 et 10,ans:Entre11 et 15,ans:Plus de 15

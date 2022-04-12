@@ -1,0 +1,85 @@
+id:0,type:compare,question:Tâche T1 - Déterminer le nombre de labels différents,ans:Je suis prêt(e)
+id:110,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-b-0-ssm-dist.png
+id:102,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/5-a-3-tsne-dist.png
+id:115,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-d-2-tsne-gt.png
+id:109,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/6-a-2-ssm-dist.png
+id:114,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-d-1-tsne-dist.png
+id:105,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/5-c-1-tsne-dist.png
+id:112,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-c-0-ssm-gt.png
+id:104,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/5-b-1-ssm-gt.png
+id:107,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/5-d-2-ssm-dist.png
+id:108,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/6-a-0-tsne-gt.png
+id:103,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/5-b-0-tsne-dist.png
+id:111,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-b-2-tsne-gt.png
+id:106,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/5-c-2-ssm-dist.png
+id:113,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-c-3-tsne-gt.png
+id:101,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/3-a-1-ssm-gt.png
+id:116,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./test/t1/7-d-3-ssm-gt.png
+id:0,type:compare,question:Tâche T2 - Trouver le label majoritaire dans le jeu de données,ans:Je suis prêt(e)
+id:201,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-a-0-ssm-gt.png,path:./test/t2/5-a-0-ssm-dist.png
+id:202,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-a-1-tsne-gt.png,path:./test/t2/5-a-1-tsne-dist.png
+id:203,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-b-0-ssm-gt.png,path:./test/t2/5-b-0-ssm-dist.png
+id:204,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-b-1-tsne-gt.png,path:./test/t2/5-b-1-tsne-dist.png
+id:205,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-c-0-ssm-gt.png,path:./test/t2/5-c-0-ssm-dist.png
+id:206,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-c-2-tsne-gt.png,path:./test/t2/5-c-2-tsne-dist.png
+id:207,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-d-1-tsne-gt.png,path:./test/t2/5-d-1-tsne-dist.png
+id:208,type:color5,question:Quel est le label le plus représenté ?,path:./test/t2/5-d-3-ssm-gt.png,path:./test/t2/5-d-3-ssm-dist.png
+id:209,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-a-2-ssm-gt.png,path:./test/t2/7-a-2-ssm-dist.png
+id:210,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-a-3-tsne-gt.png,path:./test/t2/7-a-3-tsne-dist.png
+id:211,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-b-2-tsne-gt.png,path:./test/t2/7-b-2-tsne-dist.png
+id:212,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-b-3-ssm-gt.png,path:./test/t2/7-b-3-ssm-dist.png
+id:213,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-c-0-ssm-gt.png,path:./test/t2/7-c-0-ssm-dist.png
+id:214,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-c-1-tsne-gt.png,path:./test/t2/7-c-1-tsne-dist.png
+id:215,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-d-1-tsne-gt.png,path:./test/t2/7-d-1-tsne-dist.png
+id:216,type:color7,question:Quel est le label le plus représenté ?,path:./test/t2/7-d-3-ssm-gt.png,path:./test/t2/7-d-3-ssm-dist.png
+id:0,type:compare,question:Tâche T3 - Trouver quel cluster est plus proche d’un autre dans RN,ans:Je suis prêt(e)
+id:301,type:color5,question:Quel est le cluster le plus proche du cluster orange dans RN ?,path:./test/t3/5-a-1-ssm-gt.png,path:./test/t3/5-a-1-ssm-dist.png
+id:302,type:color5,question:Quel est le cluster le plus proche du cluster bleu dans RN ?,path:./test/t3/5-a-2-tsne-gt.png,path:./test/t3/5-a-2-tsne-dist.png
+id:303,type:color5,question:Quel est le cluster le plus proche du cluster violet dans RN ?,path:./test/t3/5-b-2-ssm-gt.png,path:./test/t3/5-b-2-ssm-dist.png
+id:304,type:color5,question:Quel est le cluster le plus proche du cluster violet dans RN ?,path:./test/t3/5-b-3-tsne-gt.png,path:./test/t3/5-b-3-tsne-dist.png
+id:305,type:color5,question:Quel est le cluster le plus proche du cluster vert dans RN ?,path:./test/t3/5-c-0-ssm-gt.png,path:./test/t3/5-c-0-ssm-dist.png
+id:306,type:color5,question:Quel est le cluster le plus proche du cluster orange dans RN ?,path:./test/t3/5-c-1-tsne-gt.png,path:./test/t3/5-c-1-tsne-dist.png
+id:307,type:color5,question:Quel est le cluster le plus proche du cluster rouge dans RN ?,path:./test/t3/5-d-1-ssm-gt.png,path:./test/t3/5-d-1-ssm-dist.png
+id:308,type:color5,question:Quel est le cluster le plus proche du cluster rouge dans RN ?,path:./test/t3/5-d-2-tsne-gt.png,path:./test/t3/5-d-2-tsne-dist.png
+id:309,type:color7,question:Quel est le cluster le plus proche du cluster vert dans RN ?,path:./test/t3/7-a-2-ssm-gt.png,path:./test/t3/7-a-2-ssm-dist.png
+id:310,type:color7,question:Quel est le cluster le plus proche du cluster bleu dans RN ?,path:./test/t3/7-a-3-tsne-gt.png,path:./test/t3/7-a-3-tsne-dist.png
+id:311,type:color7,question:Quel est le cluster le plus proche du cluster bleu dans RN ?,path:./test/t3/7-b-0-tsne-gt.png,path:./test/t3/7-b-0-tsne-dist.png
+id:312,type:color7,question:Quel est le cluster le plus proche du cluster rouge dans RN ?,path:./test/t3/7-b-3-ssm-gt.png,path:./test/t3/7-b-3-ssm-dist.png
+id:313,type:color7,question:Quel est le cluster le plus proche du cluster marron dans RN ?,path:./test/t3/7-c-0-tsne-gt.png,path:./test/t3/7-c-0-tsne-dist.png
+id:314,type:color7,question:Quel est le cluster le plus proche du cluster jaune dans RN ?,path:./test/t3/7-c-3-ssm-gt.png,path:./test/t3/7-c-3-ssm-dist.png
+id:315,type:color7,question:Quel est le cluster le plus proche du cluster vert dans RN ?,path:./test/t3/7-d-2-tsne-gt.png,path:./test/t3/7-d-2-tsne-dist.png
+id:316,type:color7,question:Quel est le cluster le plus proche du cluster bleu dans RN ?,path:./test/t3/7-d-4-ssm-gt.png,path:./test/t3/7-d-4-ssm-dist.png
+id:0,type:compare,question:Tâche T3 - Trouver la forme des données dans RN,ans:Je suis prêt(e)
+id:406,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-c-1-tsne-gt.png,path:./test/t4/5-c-1-tsne-dist.png
+id:401,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-a-1-ssm-gt.png,path:./test/t4/5-a-1-ssm-dist.png
+id:404,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-b-3-ssm-gt.png,path:./test/t4/5-b-3-ssm-dist.png
+id:402,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-a-2-tsne-gt.png,path:./test/t4/5-a-2-tsne-dist.png
+id:407,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-d-1-ssm-gt.png,path:./test/t4/5-d-1-ssm-dist.png
+id:403,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-b-2-tsne-gt.png,path:./test/t4/5-b-2-tsne-dist.png
+id:408,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-d-1-tsne-gt.png,path:./test/t4/5-d-1-tsne-dist.png
+id:405,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/5-c-0-ssm-gt.png,path:./test/t4/5-c-0-ssm-dist.png
+id:412,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-b-2-ssm-gt.png,path:./test/t4/7-b-2-ssm-dist.png
+id:410,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-a-3-tsne-gt.png,path:./test/t4/7-a-3-tsne-dist.png
+id:414,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-c-1-ssm-gt.png,path:./test/t4/7-c-1-ssm-dist.png
+id:416,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-d-1-tsne-gt.png,path:./test/t4/7-d-1-tsne-dist.png
+id:411,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-b-1-tsne-gt.png,path:./test/t4/7-b-1-tsne-dist.png
+id:413,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-c-0-tsne-gt.png,path:./test/t4/7-c-0-tsne-dist.png
+id:415,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-d-0-ssm-gt.png,path:./test/t4/7-d-0-ssm-dist.png
+id:409,type:struct,question:Quelle caractéristique possède les données dans RN ?,path:./test/t4/7-a-2-ssm-gt.png,path:./test/t4/7-a-2-ssm-dist.png
+id:0,type:compare,question:Tâche T5 - Trouver le nombre d’« outliers » dans un cluster,ans:Je suis prêt(e)
+id:501,type:count,question:Combien y'a-t-il d'outliers dans le cluster violet ?,path:./test/t5/5-a-1-ssm-gt.png,path:./test/t5/5-a-1-ssm-dist.png
+id:502,type:count,question:Combien y'a-t-il d'outliers dans le cluster orange ?,path:./test/t5/5-a-2-tsne-gt.png,path:./test/t5/5-a-2-tsne-dist.png
+id:503,type:count,question:Combien y'a-t-il d'outliers dans le cluster rouge ?,path:./test/t5/5-b-1-tsne-gt.png,path:./test/t5/5-b-1-tsne-dist.png
+id:504,type:count,question:Combien y'a-t-il d'outliers dans le cluster orange ?,path:./test/t5/5-b-2-ssm-gt.png,path:./test/t5/5-b-2-ssm-dist.png
+id:505,type:count,question:Combien y'a-t-il d'outliers dans le cluster violet ?,path:./test/t5/5-c-0-tsne-gt.png,path:./test/t5/5-c-0-tsne-dist.png
+id:506,type:count,question:Combien y'a-t-il d'outliers dans le cluster vert ?,path:./test/t5/5-c-1-ssm-gt.png,path:./test/t5/5-c-1-ssm-dist.png
+id:507,type:count,question:Combien y'a-t-il d'outliers dans le cluster bleu ?,path:./test/t5/5-d-1-ssm-gt.png,path:./test/t5/5-d-1-ssm-dist.png
+id:508,type:count,question:Combien y'a-t-il d'outliers dans le cluster vert ?,path:./test/t5/5-d-2-tsne-gt.png,path:./test/t5/5-d-2-tsne-dist.png
+id:509,type:count,question:Combien y'a-t-il d'outliers dans le cluster jaune ?,path:./test/t5/7-a-2-tsne-gt.png,path:./test/t5/7-a-2-tsne-dist.png
+id:510,type:count,question:Combien y'a-t-il d'outliers dans le cluster vert ?,path:./test/t5/7-a-3-ssm-gt.png,path:./test/t5/7-a-3-ssm-dist.png
+id:511,type:count,question:Combien y'a-t-il d'outliers dans le cluster marron ?,path:./test/t5/7-b-0-ssm-gt.png,path:./test/t5/7-b-0-ssm-dist.png
+id:512,type:count,question:Combien y'a-t-il d'outliers dans le cluster jaune ?,path:./test/t5/7-b-2-tsne-gt.png,path:./test/t5/7-b-2-tsne-dist.png
+id:513,type:count,question:Combien y'a-t-il d'outliers dans le cluster orange ?,path:./test/t5/7-c-0-tsne-gt.png,path:./test/t5/7-c-0-tsne-dist.png
+id:514,type:count,question:Combien y'a-t-il d'outliers dans le cluster violet ?,path:./test/t5/7-c-1-ssm-gt.png,path:./test/t5/7-c-1-ssm-dist.png
+id:515,type:count,question:Combien y'a-t-il d'outliers dans le cluster bleu ?,path:./test/t5/7-d-0-ssm-gt.png,path:./test/t5/7-d-0-ssm-dist.png
+id:516,type:count,question:Combien y'a-t-il d'outliers dans le cluster vert ?,path:./test/t5/7-d-2-tsne-gt.png,path:./test/t5/7-d-2-tsne-dist.png

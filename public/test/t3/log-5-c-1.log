@@ -1,0 +1,26 @@
+Usage : nnSsmDemo <activations.h5>
+Controls : ...
+--- label shuffling ---
+switched 2 to 0
+switched 0 to 1
+switched 1 to 2
+switched 3 to 3
+switched 4 to 4
+--- pivots ---
+0: {id:-1007984592,data:[-40.7089,108.014,108.835]} ; radius = 43.736
+1: {id:-1007984592,data:[206.983,-138.678,94.2126]} ; radius = 43.736
+--- clusters ---
+0:0 --> {id:489970489,data:[-19.314,122.877,110.819]} ; size = 4614 ; radius = 7.13031 ; density = 0
+    <--> 1 : 56.365
+    <--> 2 : 18.5388
+0:1 --> {id:489970489,data:[-72.5368,104.816,106.562]} ; size = 2723 ; radius = 21.6788 ; density = 0
+    <--> 1 : 0
+    <--> 2 : 66.2211
+0:2 --> {id:489970489,data:[-10.2947,124.041,94.6642]} ; size = 2493 ; radius = 7.13031 ; density = 0
+    <--> 1 : 66.2211
+    <--> 2 : 0
+1:0 --> {id:489970489,data:[221.384,-166.691,94.1824]} ; size = 2163 ; radius = 25.4901 ; density = 0
+1:1 --> {id:489970489,data:[223.515,-156.258,65.5077]} ; size = 4391 ; radius = 25.4901 ; density = 0
+--- end ---
+transfered
+Main code done, future errors can be ignored.

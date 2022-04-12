@@ -1,0 +1,31 @@
+Usage : nnSsmDemo <activations.h5>
+Controls : ...
+--- label shuffling ---
+switched 1 to 0
+switched 3 to 1
+switched 2 to 2
+switched 6 to 3
+switched 4 to 4
+switched 5 to 5
+switched 0 to 6
+--- pivots ---
+0: {id:190345072,data:[-121.494,146.193,-107.402]} ; radius = 36.9628
+1: {id:190345072,data:[-38.9628,-245.617,-124.136]} ; radius = 18.1695
+2: {id:190345072,data:[-87.4221,-139.178,-37.8175]} ; radius = 18.1695
+--- clusters ---
+0:0 --> {id:-1553704135,data:[-113.917,144.921,-85.3517]} ; size = 3653 ; radius = 10.8849 ; density = 0
+    <--> 1 : 28.3006
+    <--> 2 : 36.7986
+0:1 --> {id:-1553704135,data:[-138.322,159.093,-83.2328]} ; size = 1719 ; radius = 10.8849 ; density = 0
+    <--> 1 : 0
+    <--> 2 : 30.8463
+0:2 --> {id:-1553704135,data:[-123.12,174.505,-105.207]} ; size = 1649 ; radius = 11.864 ; density = 0
+    <--> 1 : 30.8463
+    <--> 2 : 0
+1:0 --> {id:-1553704135,data:[-27.7022,-235.51,-114.664]} ; size = 3126 ; radius = 14.8909 ; density = 0.8
+1:1 --> {id:-1553704135,data:[-31.3814,-233.105,-118.684]} ; size = 1555 ; radius = 14.8909 ; density = 0
+2:0 --> {id:-1553704135,data:[-81.8219,-141.111,-51.1603]} ; size = 1887 ; radius = 68.5775 ; density = 0.8
+2:1 --> {id:-1553704135,data:[-89.1522,-131.213,-26.6498]} ; size = 2795 ; radius = 68.5775 ; density = 0
+--- end ---
+transfered
+Main code done, future errors can be ignored.
