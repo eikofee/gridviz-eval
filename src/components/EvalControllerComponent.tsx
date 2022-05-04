@@ -66,6 +66,8 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
     endIntro(t: EvalControllerComponent) {
         this.intro = false;
         t.props.evalController.loadQuestionsFromFile();
+        let cookies = new Cookies()
+        cookies.set("currentStep", "questions")
     }
 
     cancelFunc(t: EvalControllerComponent) {
