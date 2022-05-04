@@ -28,12 +28,23 @@ export class EvalController {
     public currentAnswerTime = 0;
     public currentQuestionTimeStart = 0;
 
+    public previousAnswerText : string = "";
+
     public shuffleQuestions() {
         this.questions.sort((a, b) => Math.random() - 0.5);
     }
 
     public getQuestionCount() {
         return this.questions.length;
+    }
+
+    public setQuestionIndex(index: number) {
+        this.currentQuestionIndex = index;
+        console.log(this)
+    }
+
+    public setPreviousAnswerText(txt: string) {
+        this.previousAnswerText = txt;
     }
 
     public getCurrentQuestion() : Question|null {
@@ -68,8 +79,13 @@ export class EvalController {
         }
     }
 
-    public getResultsAsString() {
-        let r = "questionIndex,answerIndex,timeInMs\n";
+    public getResultsAsString(withHeader : boolean) {
+        let r = "";
+        if (withHeader) {
+            r += "questionIndex,answerIndex,answerText,timeInMs\n";
+        }
+
+        r += this.previousAnswerText;
         this.results.forEach(ans => {
             r+= ans.question.id + "," + ans.answer.index + "," + ans.answer.label + "," + ans.time + "\n";
         });

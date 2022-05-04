@@ -42,34 +42,34 @@ export class TrainingComponent extends React.Component<IProps, IState> {
         switch(props.case) {
             case "t1":
             this.questionsAsString=
-                `id:1,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/3-a-1-ssm-gt.png,expect:3
-                id:4,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/5-a-1-ssm-dist.png,expect:5
-                id:6,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/5-b-0-tsne-gt.png,expect:5
-                id:8,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/5-b-1-tsne-dist.png,expect:5
-                id:9,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/5-c-0-tsne-dist.png,expect:5
-                id:11,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/7-c-1-tsne-gt.png,expect:7
-                id:7,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/5-b-1-ssm-gt.png,expect:5
-                id:14,type:count,question:Combien y'a-t-il de clusters de labels différents ?,path:./train/t1/7-d-1-tsne-dist.png,expect:7`
+                `id:1,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/3-a-1-ssm-gt.png,expect:3
+                id:4,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/5-a-1-ssm-dist.png,expect:5
+                id:6,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/5-b-0-tsne-gt.png,expect:5
+                id:8,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/5-b-1-tsne-dist.png,expect:5
+                id:9,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/5-c-0-tsne-dist.png,expect:5
+                id:11,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/7-c-1-tsne-gt.png,expect:7
+                id:7,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/5-b-1-ssm-gt.png,expect:5
+                id:14,type:count,question:Combien y'a-t-il d'étiquettes différentes ?,path:./train/t1/7-d-1-tsne-dist.png,expect:7`
             break;
 
             case "t2":
             this.questionsAsString=
-                `id:1,type:color4,question:Quel est le label le plus représenté ?,path:./train/t2/4-a-0-ssm-gt.png,path:./train/t2/4-a-0-ssm-dist.png,expect:purple
-                id:2,type:color4,question:Quel est le label le plus représenté ?,path:./train/t2/4-a-1-tsne-gt.png,path:./train/t2/4-a-1-tsne-dist.png,expect:blue
-                id:3,type:color5,question:Quel est le label le plus représenté ?,path:./train/t2/5-c-3-tsne-gt.png,path:./train/t2/5-c-3-tsne-dist.png,expect:orange
-                id:4,type:color8,question:Quel est le label le plus représenté ?,path:./train/t2/8-a-0-ssm-gt.png,path:./train/t2/8-a-0-ssm-dist.png,expect:orange`
+                `id:1,type:color4,question:Quel est l'étiquette la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,path:./train/t2/4-a-0-ssm-dist.png,expect:purple
+                id:2,type:color4,question:Quel est l'étiquette la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,path:./train/t2/4-a-1-tsne-dist.png,expect:blue
+                id:3,type:color5,question:Quel est l'étiquette la plus représentée ?,path:./train/t2/5-c-3-tsne-gt.png,path:./train/t2/5-c-3-tsne-dist.png,expect:orange
+                id:4,type:color8,question:Quel est l'étiquette la plus représentée ?,path:./train/t2/8-a-0-ssm-gt.png,path:./train/t2/8-a-0-ssm-dist.png,expect:orange`
             break;
             
             case "t3":
             this.questionsAsString=
-                `id:2,type:color3,question:Quel est le cluster le plus proche du cluster bleu dans RN ?,path:./train/t3/3-a-0-ssm-gt.png,path:./train/t3/3-a-0-ssm-dist.png,expect:aucune
-                id:3,type:color5,question:Quel est le cluster le plus proche du cluster violet dans RN ?,path:./train/t3/5-a-1-tsne-gt.png,path:./train/t3/5-a-1-tsne-dist.png,expect:aucune
-                id:5,type:color5,question:Quel est le cluster le plus proche du cluster orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,path:./train/t3/5-b-0-ssm-dist.png,expect:green
-                id:4,type:color5,question:Quel est le cluster le plus proche du cluster vert dans RN ?,path:./train/t3/5-c-1-tsne-gt.png,path:./train/t3/5-c-1-tsne-dist.png,expect:blue
-                id:1,type:color5,question:Quel est le cluster le plus proche du cluster violet dans RN ?,path:./train/t3/5-c-2-ssm-gt.png,path:./train/t3/5-c-2-ssm-dist.png,expect:red
-                id:6,type:color5,question:Quel est le cluster le plus proche du cluster violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:blue
-                id:7,type:color5,question:Quel est le cluster le plus proche du cluster bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:purple
-                id:8,type:color7,question:Quel est le cluster le plus proche du cluster vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,path:./train/t3/7-b-0-tsne-dist.png,expect:brown`
+                `id:2,type:color3,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/3-a-0-ssm-gt.png,path:./train/t3/3-a-0-ssm-dist.png,expect:aucune
+                id:3,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-a-1-tsne-gt.png,path:./train/t3/5-a-1-tsne-dist.png,expect:aucune
+                id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,path:./train/t3/5-b-0-ssm-dist.png,expect:green
+                id:4,type:color5,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/5-c-1-tsne-gt.png,path:./train/t3/5-c-1-tsne-dist.png,expect:blue
+                id:1,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-c-2-ssm-gt.png,path:./train/t3/5-c-2-ssm-dist.png,expect:red
+                id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:blue
+                id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:purple
+                id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,path:./train/t3/7-b-0-tsne-dist.png,expect:brown`
             break;
             
             case "t4":
@@ -86,10 +86,10 @@ export class TrainingComponent extends React.Component<IProps, IState> {
 
             case "t5":
                 this.questionsAsString=
-                `id:1,type:count,question:Combien y'a-t-il d'outliers dans le cluster violet ?,path:./train/t5/4-a-1-ssm-gt.png,path:./train/t5/4-a-1-ssm-dist.png,expect:4
-                id:2,type:count,question:Combien y'a-t-il d'outliers dans le cluster bleu ?,path:./train/t5/4-a-2-tsne-gt.png,path:./train/t5/4-a-2-tsne-dist.png,expect:1
-                id:3,type:count,question:Combien y'a-t-il d'outliers dans le cluster rouge ?,path:./train/t5/5-b-1-tsne-gt.png,path:./train/t5/5-b-1-tsne-dist.png,expect:2
-                id:4,type:count,question:Combien y'a-t-il d'outliers dans le cluster bleu ?,path:./train/t5/5-b-2-ssm-gt.png,path:./train/t5/5-b-2-ssm-dist.png,expect:1`
+                `id:1,type:count,question:Combien y'a-t-il d'outliers dans le groupe violet ?,path:./train/t5/4-a-1-ssm-gt.png,path:./train/t5/4-a-1-ssm-dist.png,expect:4
+                id:2,type:count,question:Combien y'a-t-il d'outliers dans le groupe bleu ?,path:./train/t5/4-a-2-tsne-gt.png,path:./train/t5/4-a-2-tsne-dist.png,expect:1
+                id:3,type:count,question:Combien y'a-t-il d'outliers dans le groupe rouge ?,path:./train/t5/5-b-1-tsne-gt.png,path:./train/t5/5-b-1-tsne-dist.png,expect:2
+                id:4,type:count,question:Combien y'a-t-il d'outliers dans le groupe bleu ?,path:./train/t5/5-b-2-ssm-gt.png,path:./train/t5/5-b-2-ssm-dist.png,expect:1`
             break;
         }
         
