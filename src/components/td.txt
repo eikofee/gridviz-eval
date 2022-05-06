@@ -1,0 +1,39 @@
+- Enlever T1**                                                                                                          OK
+- T3 --> D'abord labels seuls, ensuite labels + dist**                                                                  OK
+- Enlever génération faux outliers des tâches autres que T5                                                             OK
+- Alléger entraînements --> garder cas simples qui expliquent comment se servir des vues
+- Timer 30s/1m par question
+- Suivant --> Valider                                                                                                   OK
+- Envoyer données de l'éval automatiquement/progressivement /!\
+**Avant de corriger questionnaire : écrire hypothèses et comment y répondre par éval + séparer apport SSM/Vue dist      OK
+
+
+
+-------------------------------------------------
+On suppose deux choses :
+- La vue compacte apporte autant d'informations que la vue classique mais avec une meilleure visibilité
+- Ajouter la coloration des éléments par distance plutôt que par étiquette permet de mieux distinguer la structure des données dans RN
+
+1. Les informations que l'on peut reconnaître sur une vue classique :
+    - La taille des groupes
+    - La distinction des uns des autres (frontières)
+    - Les potentiels outliers dans les groupes
+
+2. La structure des éléments dans RN peut être observée par:
+    - La proximité des groupes dans RN
+    - La disposition des groupes dans RN
+
+H1 : On suppose que la taille des groupes est mieux identifiable en vue grille qu'en vue classique
+H2 : On suppose que la grille avec vue par distance permet de mieux déterminer les frontières des groupes dans RN
+H3 : On suppose que la détection des outliers est meilleure en vue grille qu'en vue classique
+H4 : On suppose que la proximité des groupes est mieux identifiable avec la vue grille qu'en vue classique
+H4.5 : On suppose que la distance dans RN entre les groupes est mieux perceptibles avec la coloration par distances
+H5 : On suppose que la structure des données dans RN est en partie identifiable grace à la vue distance
+H5.5 : On suppose que la structure des données dans RN est mieux identifiable avec la vue en grille que la classique
+
+                                                                                                            GT | Dist | Outliers
+H1 -> T1 : Demander quel groupe est le plus grand ou le plus petit dans le jeu de données affiché :         X
+H2 & H4 & H4.5 -> T2 : Quel est le groupe le plus proche d'un autre donné :                                 X    +X
+H5 & H5.5 -> T3 : Quelle est la structure qui correspond à la topologie des données représentées dans RN :  X    +X
+H3 -> T4 : Combien y'a-t-il d'outliers dans l'image présentée :                                             X             X
+

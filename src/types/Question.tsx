@@ -28,6 +28,7 @@ export class Question {
         public imagePaths: string[] = [],
         public answers:Answer[] = [],
         public expectedAnswer: Answer = new Answer(),
+        public skipCD: boolean = false
     ) {}
 
     // e.g.: id:4,type:compare,question:Les distances A et B dans R^n sont...,path:./img/q4.png,ans:Similaire,ans:Différents,ans:Très différents
@@ -41,6 +42,9 @@ export class Question {
                 this.id = parseInt(strValue);
             if (strType == "type")
                 this.type = this.readTypeOfQuestion(strValue);
+            if (strType == "cd"){
+                this.skipCD = strValue.includes("skip");
+            }
             if (strType == "question")
                 this.question = strValue;
             if (strType == "path")

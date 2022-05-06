@@ -1,11 +1,12 @@
 import React from "react";
 import { Answer } from "../types/Answer";
 import { EvalController } from "../types/EvalController";
-import { Question } from "../types/Question";
+import { Question, QuestionType } from "../types/Question";
 import { IntroComponent } from "./IntroComponent";
 import { QuestionComponent } from "./QuestionComponent";
 import emailjs from '@emailjs/browser';
 import Cookies from 'universal-cookie';
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 
 interface IProps {
@@ -48,6 +49,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             cookies.set('currentStep', "intro", { path: '/' });
             cookies.set('currentSlide', 0, { path: '/' });
             cookies.set('answers', "", { path: '/' });
+            cookies.set('mailSent', "false", { path: '/' })
 
         } else {
             console.log("id found : " + cookies.get('id'));
@@ -68,6 +70,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
         t.props.evalController.loadQuestionsFromFile();
         let cookies = new Cookies()
         cookies.set("currentStep", "questions")
+        cookies.set("currentSlide", "0")
     }
 
     cancelFunc(t: EvalControllerComponent) {
@@ -129,8 +132,9 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 currentQuestion: q,
                 firstReady: false,
                 ready: true,
-                displayCooldown: 3
+                displayCooldown: q.skipCD ? 0 : 3
             });
+        console.log(q)
             // setTimeout(() => this.offCooldown(this), 3000)
         } else {
             console.log("Quizz ended")
@@ -141,7 +145,10 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 ready: true})
             console.log(this.props.evalController.results);
             let cookies = new Cookies();
-            this.sendMailAnswers(this.props.evalController.getResultsAsString(true), cookies.get("id"))
+            if (cookies.get('mailSent') == "false") {
+                this.sendMailAnswers(this.props.evalController.getResultsAsString(true), cookies.get("id"))
+                cookies.set('mailSent', "true")
+            }
         }
         console.log("done");
     }
@@ -167,24 +174,26 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 console.log(this.props.evalController.questions)
                 let q = <QuestionComponent useExplain={false} key={"questionComponent" + Date.now()} question={this.state.currentQuestion!} evalController={this.props.evalController!} timeStart={this.timeStart}/>;
                 this.questionComponent = q;
-                let divs = <div className="question-main">
-                <div className="question-number">
+                let divs = <Container fluid style={{maxWidth:"1200px" }} className="d-grid gap-2">
+                <Row>
                     Question {this.props.evalController.currentQuestionIndex + 1}/{this.props.evalController.getQuestionCount()}
-                </div>
+                </Row>
+                <Row>
                     {this.questionComponent}
-                    <div className="question-controls">
-                        <div className="control-cancel" onClick={() => this.cancelFunc(this)}>Annuler</div>
+                </Row>
+                <Row className="justify-content-center">
+                    <Col className="col-auto me-auto"><Button disabled={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count} variant="outline-warning" onClick={() => this.cancelFunc(this)} >Annuler</Button></Col>
                         {/* <div className={proceedEnabled ? "control-proceed" : "control-proceed disabled"} onClick={proceedEnabled ? () => this.proceedFunc(this) : () => {}}>Valider</div> */}
-                        <div className="control-proceed" onClick={() => this.proceedFunc(this)}>Valider</div>
-                    </div>
-                </div>
+                        <Col className="col-auto"><Button className="outline-danger" onClick={() => this.proceedFunc(this)}>Valider</Button></Col>
+                    </Row>
+                </Container>
                     return divs;
             } else {
-                let divs = <div className="question-main">
-                <div className="question-number">
+                let divs = <Container fluid style={{maxWidth:"1200px" }} className="d-grid gap-2">
+                <Row>
                     Prochaine question dans {this.state.displayCooldown} seconde{this.state.displayCooldown > 1 ? "s":""}.
-                </div>
-                </div>
+                </Row>
+                </Container>
                 if (!this.calledTimeout) {
                     setTimeout(() => this.offCooldown(this), 1000);
                     this.calledTimeout = true;
@@ -193,25 +202,29 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             }
         } else if (this.intro) {
             // this.sendMailAnswers();
-            return <div className="question-main">
+            return <Container fluid style={{maxWidth:"1200px"}} className="d-grid gap-2">
                 
                 <IntroComponent master={this} pageInit={this.introPageInit}/>
                 {/* <div className="control-proceed" onClick={() => this.endIntro(this)}>Commencer</div> */}
-            </div>
+            </Container>
         } else if (this.ended) {
             const blob = new Blob([this.props.evalController.getResultsAsString(true)]);                   // Step 3
             const fileDownloadUrl = URL.createObjectURL(blob);
-            return <div className="question-main">
-                <div className="question-text">
-                    Evaluation terminée, merci pour votre participation. <br/><br/>
-                    <div className="red-text"> NE FERMEZ PAS CET ONGLET !</div><br/>
-                    Veuillez maintenant remplir le questionnaire en suivant ce lien : <a href="https://forms.gle/YtbcbCtS8RbNUeou6">https://forms.gle/YtbcbCtS8RbNUeou6</a> <br/>
-                    Votre identifiant est {cookies.get("id")}.
-                </div>
-                <div>
-                    <a href={fileDownloadUrl} download={"answers-" + cookies.get("id")}>Télécharger les réponses</a>
-                </div>
-            </div>
+            return <Container fluid style={{maxWidth:"1200px"}} className="d-block gap-5 flex-fill mh-100">
+                <Row className="justify-content-center d-grid">
+                    <Col className="col-auto"> Evaluation terminée, merci pour votre participation. </Col>
+                </Row>
+                <Row className="justify-content-center d-grid flex-fill">
+                    <Col className="col-auto">
+                    Veuillez maintenant remplir le questionnaire en suivant ce lien : <a target="_blank" href="https://forms.gle/YtbcbCtS8RbNUeou6">https://forms.gle/YtbcbCtS8RbNUeou6</a> avec l'identifiant {cookies.get("id")}.<br/>
+                    </Col>
+                </Row>
+                <Row className="justify-content-center d-grid">
+                    <Col className="col-auto">
+                        <a href={fileDownloadUrl} download={"answers-" + cookies.get("id")}>Télécharger les réponses</a>
+                    </Col>
+                </Row>
+            </Container>
         } else {
             console.log("skip render")
             return null;

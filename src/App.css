@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -53,22 +53,15 @@
   max-width:200px;
   margin-left: 5px;
   margin-right: 5px;
+  margin-top: 5px;
   padding: 10px;
   cursor: pointer;
   text-align: center;
 }
 
-.answer-image {
-  max-width: 65px;
-  max-height: 65px;
-  vertical-align: middle;
-}
 
-.answer-color {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-}
+
+
 
 .keyboard {
   min-width: 20px;
@@ -131,8 +124,9 @@
   margin-right: 10px;
 }
 
-.question-answers {
-  margin: 25px;
+.question-image .legend {
+  max-width: 200px;
+  vertical-align: top;
 }
 
 .intro-text {
@@ -154,4 +148,17 @@
 .disabled {
   color: lightgray;
   background-color: darkgray;
+} */
+
+
+.answer-image {
+  max-width: 65px;
+  max-height: 65px;
+  vertical-align: middle;
+}
+
+.answer-color {
+  width: 65px;
+  height: 65px;
+  vertical-align: middle;
 }

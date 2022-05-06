@@ -2,6 +2,9 @@ import React from "react";
 import { Answer, AnswerType } from "../types/Answer";
 import { EvalController } from "../types/EvalController";
 import { Question, QuestionType } from "../types/Question";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
+
 
 interface IProps {
     evalController: EvalController;
@@ -20,6 +23,7 @@ interface IState {
 }
 
 export class QuestionComponent extends React.Component<IProps, IState> {
+    public hasLegend: boolean = false;
     constructor(props: any) {
         super(props);
         this.state = {
@@ -35,11 +39,14 @@ export class QuestionComponent extends React.Component<IProps, IState> {
         this.props.evalController.currentAnswerText = this.state.answerText;
         this.props.evalController.currentAnswerTime = this.state.answerTime;
         this.props.evalController.currentQuestionTimeStart = this.state.questionTimeStart;
+        if (this.props.question.imagePaths.length > 1) {
+            this.hasLegend = true;
+        }
     }
 
-    generateNumericalKeyboard() : JSX.Element[] {
+    generateNumericalKeyboard(from: number, to:number) : JSX.Element[] {
         let result = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = from; i <= to; i++) {
             let f = (t: QuestionComponent) => {
                 t.setState({
                     answerIndex: t.state.answerIndex * 10 + i,
@@ -48,10 +55,10 @@ export class QuestionComponent extends React.Component<IProps, IState> {
                     questionTimeStart: t.state.questionTimeStart
                 })
             }
-            let a = <div className="question-answer keyboard" onClick={() => f(this)}>{i}</div>
+            let a = <Col><Button className="outline-secondary" onClick={() => f(this)}>{i}</Button></Col>
             result.push(a);
         }
-        return result;
+        return [<Row className="col-5 gap-1">{result}</Row>];
     }
 
     generateStructKeyboard() : JSX.Element[] {
@@ -64,11 +71,11 @@ export class QuestionComponent extends React.Component<IProps, IState> {
                 questionTimeStart: t.state.questionTimeStart
             });
         }
-        
-        let s1 = <div className={this.state.answerText == "split" ? "question-answer selected" : "question-answer"} onClick={() => f(this, 0)}><img src="ans/struct1.png" alt="Les clusters sont tous éloignés les uns des autres dans RN" className="answer-image"/></div>
-        let s2 = <div className={this.state.answerText == "bubble" ? "question-answer selected" : "question-answer"} onClick={() => f(this, 1)}><img src="ans/struct2.png" alt="Au moins un cluster est à l'intérieur d'un autre sans se mélanger dans RN" className="answer-image"/></div>
-        let s3 = <div className={this.state.answerText == "mix" ? "question-answer selected" : "question-answer"} onClick={() => f(this, 2)}><img src="ans/struct3.png" alt="Au moins deux clusters se superposent dans RN" className="answer-image"/></div>
-        let s4 = <div className={this.state.answerText == "close" ? "question-answer selected" : "question-answer"} onClick={() => f(this, 3)}><img src="ans/struct4.png" alt="Au moins deux clusters sont proches dans RN par rapport aux autres" className="answer-image"/></div>
+
+        let s1 = <Col className="justify-content-center d-grid"> <Button variant={this.state.answerText == "split" ? "success" : "outline-secondary"} onClick={() => f(this, 0)}><Image fluid src="ans/struct1.png" title="Les clusters sont tous éloignés les uns des autres dans RN" className="answer-image"/></Button></Col>
+        let s2 = <Col className="justify-content-center d-grid"> <Button variant={this.state.answerText == "bubble" ? "success" : "outline-secondary"} onClick={() => f(this, 1)}><Image fluid src="ans/struct2.png" title="Au moins un cluster est à l'intérieur d'un autre sans se mélanger dans RN" className="answer-image"/></Button></Col>
+        let s3 = <Col className="justify-content-center d-grid"> <Button variant={this.state.answerText == "mix" ? "success" : "outline-secondary"} onClick={() => f(this, 2)}><Image fluid src="ans/struct3.png" title="Au moins deux clusters se superposent dans RN" className="answer-image"/></Button></Col>
+        let s4 = <Col className="justify-content-center d-grid"> <Button variant={this.state.answerText == "close" ? "success" : "outline-secondary"} onClick={() => f(this, 3)}><Image fluid src="ans/struct4.png" title="Au moins deux clusters sont proches dans RN par rapport aux autres" className="answer-image"/></Button></Col>
         let result = [s1, s2, s3, s4]; // ...
         return result;
     }
@@ -87,13 +94,12 @@ export class QuestionComponent extends React.Component<IProps, IState> {
             });
         }
         for (let ii = 0; ii < i; ++ii) {
-            let className = this.state.answerIndex == ii ? "question-answer selected" : "question-answer";
-            let a = <div className={className} key={"a" + colorArray[ii]} onClick={() => f(this, ii)}><img src={"ans/" + colorArray[ii] + ".jpg"} alt={colorArray[ii]} className="answer-color"/></div>
+            let className = this.state.answerIndex == ii ? "success" : "outline-secondary";
+            let a = <Col className="justify-content-center d-grid"><Button variant={className} key={"a" + colorArray[ii]} onClick={() => f(this, ii)}>
+                <Image fluid src={"ans/" + colorArray[ii] + ".jpg"} title={colorArray[ii]} className="answer-color"/>
+                </Button></Col>
             result.push(a);
         }
-        let className = this.state.answerIndex == i ? "question-answer selected" : "question-answer";
-        let az = <div className={className} key={"anone"} onClick={() => f(this, i)}><img src="ans/none.png" alt="aucune en particulier" className="answer-color"/></div>
-        result.push(az);
         return result;
     }
 
@@ -112,9 +118,11 @@ export class QuestionComponent extends React.Component<IProps, IState> {
 
     render() {
         let answers :JSX.Element[] = [];
-        if (this.props.question.type == QuestionType.Count)
-            answers = this.generateNumericalKeyboard();
-        else if (this.props.question.type == QuestionType.Color3) {
+        let answers2 :JSX.Element[] = [];
+        if (this.props.question.type == QuestionType.Count) {
+            answers = this.generateNumericalKeyboard(0, 4);
+            answers2 = this.generateNumericalKeyboard(5, 9);
+        } else if (this.props.question.type == QuestionType.Color3) {
             answers = this.generateColorKeyboard(3);
         } else if (this.props.question.type == QuestionType.Color4) {
             answers = this.generateColorKeyboard(4);
@@ -136,10 +144,10 @@ export class QuestionComponent extends React.Component<IProps, IState> {
                         answerText : ans.label
                     });
                 }
-                let className = this.state.answerIndex == ans.index ? "question-answer selected" : "question-answer";
+                let className = this.state.answerIndex == ans.index ? "success" : "outline-success";
                 let content = ans.type == AnswerType.Image ? <img className="answer-image" src={ans.label} /> : ans.label;
                 content = ans.type == AnswerType.Color ? <img className="answer-color" src={"./ans/" + ans.label + ".jpg"} /> : content;
-                let elem = <div key={"elem" + ans.label} className={className} onClick={() => funcAnswer(this)}>{content}</div>;
+                let elem = <Col className="justify-content-center d-grid"><Button key={"elem" + ans.label} variant={className} onClick={() => funcAnswer(this)}>{content}</Button></Col>;
                 answers.push(elem);
             });
         }
@@ -147,13 +155,15 @@ export class QuestionComponent extends React.Component<IProps, IState> {
         if (this.state.useExplain) {
             imagesPaths = imagesPaths.map(s => this.getExplainPath(s));
         }
-        let images = imagesPaths.map(p => <img src={p}/>);
-        let result = <div className="question-div">
-            <div className="question-image">{images}</div>
-            <div className="question-text">{this.props.question.question}</div>
-            {this.props.question.type == QuestionType.Count ? <div className="question-text">{this.state.answerText}</div>:<div></div>}
-            <div className="question-answers">{answers}</div>
-        </div>
+        let images = imagesPaths.map(p => <Col xs={6}><Image src={p}/></Col>);
+        let result = <Container fluid className="d-flex flex-column gap-2">
+            <Row className="justify-content-center">{images}</Row>
+            <Row className="justify-content-center">{this.props.question.question}</Row>
+            {this.hasLegend ? <Row className="justify-content-center"><Col xs={3}><Image fluid src="./intro/legend.png" className="legend"/></Col></Row> : ""}
+            {this.props.question.type == QuestionType.Count ? <Row className="justify-content-center">{this.state.answerText}</Row>:""}
+            <Row className="justify-content-center">{answers}</Row>
+            {answers2.length > 0 ? <Row className="justify-content-center">{answers2}</Row> : ""}
+        </Container>
         return result;
     }
 }

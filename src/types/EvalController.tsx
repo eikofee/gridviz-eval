@@ -95,7 +95,7 @@ export class EvalController {
 
     public loadQuestionsFromFile() {
         console.log("reading questions")
-        fetch("./eval-q3.csv")
+        fetch("./eval-final.csv")
             .then(r => r.text().then(text => {
                 console.log("calling once");
                 this.loadQuestionsFromFileFinish(text, this.evalControllerComponent!);
