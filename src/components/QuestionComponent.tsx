@@ -95,9 +95,12 @@ export class QuestionComponent extends React.Component<IProps, IState> {
         }
         for (let ii = 0; ii < i; ++ii) {
             let className = this.state.answerIndex == ii ? "success" : "outline-secondary";
-            let a = <Col className="justify-content-center d-grid"><Button variant={className} key={"a" + colorArray[ii]} onClick={() => f(this, ii)}>
-                <Image fluid src={"ans/" + colorArray[ii] + ".jpg"} title={colorArray[ii]} className="answer-color"/>
-                </Button></Col>
+            let a = 
+                // <Col className="justify-content-center d-grid">
+                <Button variant={className} key={"a" + colorArray[ii]} onClick={() => f(this, ii)}>
+                    <Image fluid src={"ans/" + colorArray[ii] + ".jpg"} title={colorArray[ii]} className="answer-color"/>
+                </Button>
+            {/* </Col> */}
             result.push(a);
         }
         return result;
@@ -161,8 +164,8 @@ export class QuestionComponent extends React.Component<IProps, IState> {
             <Row className="justify-content-center">{this.props.question.question}</Row>
             {this.hasLegend ? <Row className="justify-content-center"><Col xs={3}><Image fluid src="./intro/legend.png" className="legend"/></Col></Row> : ""}
             {this.props.question.type == QuestionType.Count ? <Row className="justify-content-center">{this.state.answerText}</Row>:""}
-            <Row className="justify-content-center">{answers}</Row>
-            {answers2.length > 0 ? <Row className="justify-content-center">{answers2}</Row> : ""}
+            <div className="d-flex justify-content-center">{answers}</div>
+            {answers2.length > 0 ? <div className="d-flex justify-content-center">{answers2}</div> : ""}
         </Container>
         return result;
     }

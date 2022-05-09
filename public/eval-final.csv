@@ -1,0 +1,86 @@
+id:0,type:compare,question:Tâche T1 - Trouver l'étiquette la plus représentée,ans:Je suis prêt(e),cd:skip
+id:8,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-b0-2-tsne-gt.png
+id:7,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-b0-1-ssm-gt.png
+id:11,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-d0-4-ssm-gt.png
+id:13,type:color6,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/6-a0-0-ssm-gt.png
+id:6,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-a0-7-tsne-gt.png
+id:14,type:color6,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/6-a0-2-tsne-gt.png
+id:2,type:color3,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/3-a0-8-tsne-gt.png
+id:10,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-c0-7-tsne-gt.png
+id:3,type:color4,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/4-a0-5-ssm-gt.png
+id:1,type:color3,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/3-a0-0-ssm-gt.png
+id:9,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-c0-6-ssm-gt.png
+id:12,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-d0-5-tsne-gt.png
+id:4,type:color4,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/4-a0-7-tsne-gt.png
+id:5,type:color5,question:Quelle est l'étiquette de groupe la plus représentée ?,path:./final/t1/5-a0-1-ssm-gt.png
+id:0,type:compare,question:Tâche T2 - Trouver quel groupe est plus proche d’un autre dans RN,ans:Je suis prêt(e),cd:skip
+id:28,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-c0-9-tsne-gt.png
+id:27,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-2-ssm-gt.png
+id:34,type:color7,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/7-c0-3-tsne-gt.png
+id:30,type:color5,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/5-d0-6-tsne-gt.png
+id:25,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-b0-0-ssm-gt.png
+id:29,type:color5,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/5-d0-4-ssm-gt.png
+id:26,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-9-tsne-gt.png
+id:35,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-d0-0-ssm-gt.png
+id:32,type:color7,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/7-b0-6-tsne-gt.png
+id:36,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-5-tsne-gt.png
+id:33,type:color7,question:Quel est le groupe le plus proche du groupe marron dans RN ?,path:./final/t2/7-c0-6-ssm-gt.png
+id:31,type:color7,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/7-b0-4-ssm-gt.png
+id:44,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-b0-7-tsne-gt.png,path:./final/t2/7-b0-7-tsne-dist.png
+id:47,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-d0-4-ssm-gt.png,path:./final/t2/7-d0-4-ssm-dist.png
+id:43,type:color7,question:Quel est le groupe le plus proche du groupe jaune dans RN ?,path:./final/t2/7-b0-2-ssm-gt.png,path:./final/t2/7-b0-2-ssm-dist.png
+id:41,type:color5,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/5-d0-3-ssm-gt.png,path:./final/t2/5-d0-3-ssm-dist.png
+id:42,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-d0-5-tsne-gt.png,path:./final/t2/5-d0-5-tsne-dist.png
+id:48,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-8-tsne-gt.png,path:./final/t2/7-d0-8-tsne-dist.png
+id:40,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-c0-5-tsne-gt.png,path:./final/t2/5-c0-5-tsne-dist.png
+id:39,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-6-ssm-gt.png,path:./final/t2/5-c0-6-ssm-dist.png
+id:46,type:color7,question:Quel est le groupe le plus proche du groupe marron dans RN ?,path:./final/t2/7-c0-4-tsne-gt.png,path:./final/t2/7-c0-4-tsne-dist.png
+id:38,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-6-tsne-gt.png,path:./final/t2/5-b0-6-tsne-dist.png
+id:45,type:color7,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/7-c0-9-ssm-gt.png,path:./final/t2/7-c0-9-ssm-dist.png
+id:37,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-5-ssm-gt.png,path:./final/t2/5-b0-5-ssm-dist.png
+id:0,type:compare,question:Tâche T3 - Trouver la topologie des données dans RN,ans:Je suis prêt(e),cd:skip
+id:49,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-a0-5-ssm-gt.png
+id:54,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-c0-6-tsne-gt.png
+id:53,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-c0-4-ssm-gt.png
+id:61,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-c0-0-ssm-gt.png
+id:51,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-b0-4-ssm-gt.png
+id:57,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-a0-7-ssm-gt.png
+id:62,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-c0-1-tsne-gt.png
+id:64,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-5-tsne-gt.png
+id:63,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-4-ssm-gt.png
+id:50,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-a0-1-tsne-gt.png
+id:52,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-b0-3-tsne-gt.png
+id:55,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-d0-8-ssm-gt.png
+id:56,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-d0-2-tsne-gt.png
+id:59,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-b0-4-ssm-gt.png
+id:58,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-a0-3-tsne-gt.png
+id:60,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-b0-5-tsne-gt.png
+id:71,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-d0-7-ssm-gt.png,path:./final/t3/5-d0-7-ssm-dist.png
+id:73,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-a0-9-ssm-gt.png,path:./final/t3/7-a0-9-ssm-dist.png
+id:69,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-c0-8-ssm-gt.png,path:./final/t3/5-c0-8-ssm-dist.png
+id:75,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-b0-2-ssm-gt.png,path:./final/t3/7-b0-2-ssm-dist.png
+id:79,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-1-ssm-gt.png,path:./final/t3/7-d0-1-ssm-dist.png
+id:76,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-b0-6-tsne-gt.png,path:./final/t3/7-b0-6-tsne-dist.png
+id:65,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-a0-6-ssm-gt.png,path:./final/t3/5-a0-6-ssm-dist.png
+id:70,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-c0-1-tsne-gt.png,path:./final/t3/5-c0-1-tsne-dist.png
+id:78,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-c0-2-tsne-gt.png,path:./final/t3/7-c0-2-tsne-dist.png
+id:66,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-a0-8-tsne-gt.png,path:./final/t3/5-a0-8-tsne-dist.png
+id:68,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-b0-2-tsne-gt.png,path:./final/t3/5-b0-2-tsne-dist.png
+id:67,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-b0-5-ssm-gt.png,path:./final/t3/5-b0-5-ssm-dist.png
+id:77,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-c0-3-ssm-gt.png,path:./final/t3/7-c0-3-ssm-dist.png
+id:80,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-6-tsne-gt.png,path:./final/t3/7-d0-6-tsne-dist.png
+id:72,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/5-d0-5-tsne-gt.png,path:./final/t3/5-d0-5-tsne-dist.png
+id:74,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-a0-6-tsne-gt.png,path:./final/t3/7-a0-6-tsne-dist.png
+id:0,type:compare,question:Tâche T4 - Trouver le nombre d'intrus dans les données,ans:Je suis prêt(e),cd:skip
+id:92,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/8-a0.006-1-tsne-gt.png
+id:90,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/7-a0.006-8-tsne-gt.png
+id:85,type:count,question:Combien y'a-t-il d'intrus dans le groupe orange ?,path:./final/t4/5-a0.006-4-ssm-gt.png
+id:81,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/3-a0.006-2-ssm-gt.png
+id:89,type:count,question:Combien y'a-t-il d'intrus dans le groupe orange ?,path:./final/t4/7-a0.006-3-ssm-gt.png
+id:88,type:count,question:Combien y'a-t-il d'intrus dans le groupe jaune ?,path:./final/t4/6-a0.006-3-tsne-gt.png
+id:91,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/8-a0.006-7-ssm-gt.png
+id:82,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/3-a0.006-5-tsne-gt.png
+id:86,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/5-a0.006-7-tsne-gt.png
+id:84,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/4-a0.006-1-tsne-gt.png
+id:83,type:count,question:Combien y'a-t-il d'intrus dans le groupe violet ?,path:./final/t4/4-a0.006-7-ssm-gt.png
+id:87,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/6-a0.006-8-ssm-gt.png
