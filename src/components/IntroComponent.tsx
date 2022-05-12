@@ -2,7 +2,7 @@ import React from "react";
 import Cookies from "universal-cookie";
 import { EvalControllerComponent } from "./EvalControllerComponent";
 import { TrainingComponent } from "./TrainingComponent";
-import { Button, Col, Container, Nav, Row, Stack } from "react-bootstrap"
+import { Alert, Button, Col, Container, Nav, Row, Stack } from "react-bootstrap"
 import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'katex/dist/katex.min.css';
@@ -39,7 +39,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
         })
 
         let cookies = new Cookies()
-        cookies.set("currentSlide", ic.state.page + 1)
+        cookies.set("currentSlide", ic.state.page + 1, {maxAge: 86400})
     }
     
     prevPage(ic: IntroComponent) {
@@ -48,7 +48,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
         })
 
         let cookies = new Cookies()
-        cookies.set("currentSlide", ic.state.page - 1)
+        cookies.set("currentSlide", ic.state.page - 1, {maxAge: 86400})
     }
 
     skipToEnd(ic : IntroComponent) {
@@ -75,7 +75,14 @@ export class IntroComponent extends React.Component<IProps, IState> {
                 prevLabel = "Recommencer entraînement T4";
                 break;
         }
-        let title = <Row className="justify-content-center"><Col className="col-auto">Introduction ({this.state.page +1 }/16)</Col></Row>
+        let title = <Row className="justify-content-center"><Col className="col-auto">Introduction ({this.state.page +1 }/17)</Col></Row>
+        let nextLabel = navigator.cookieEnabled ? "Suivant" : "Les cookies ne sont pas activés."
+        switch(this.state.page) {
+            case 16:
+                nextLabel = "Commencer l'évaluation"
+                break;
+        }
+        let nextVariant = navigator.cookieEnabled ? "primary" : "danger disabled"
         let nav = <Row>
             <Col className="col-auto me-auto">
                 <Button variant={this.state.page > 0 ? "primary" : "primary disabled"} onClick={() => this.prevPage(this)}>
@@ -83,7 +90,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
                 </Button>
             </Col>
             <Col className="col-auto">
-                <Button variant="primary" className="ms-auto" onClick={() => this.nextPage(this)}>Suivant</Button>
+                <Button variant={nextVariant} className="ms-auto" onClick={() => this.nextPage(this)}>{nextLabel}</Button>
             </Col>
         </Row>
         let text = <div></div>
@@ -93,10 +100,11 @@ export class IntroComponent extends React.Component<IProps, IState> {
                 training = false;
                 text =
                     <div>
+                        <Alert variant="secondary">Ce site web d'évaluation nécessite les autorisations pour exécuter du code JavaScript ainsi que pour utiliser les cookies. Si vous voyez ce message, c'est que le JavaScript est bien autorisé.</Alert>
                     <div>
                         Cette évaluation porte sur la représentation de données en hautes dimensions <TeX >R^N</TeX> sur un écran.
                         Plus précisément, nous évaluons l’efficacité de deux représentations pour des tâches communément effectuées lors de la visualisation de telles données.
-                        Nous visualiserons plusieurs jeux de données pendant cette évaluation, et une étiquette est attribuée à chaque élément le groupe de données auquel il appartient.
+                        Nous visualiserons plusieurs jeux de données pendant cette évaluation, et une étiquette est attribuée à chaque élément.
                     </div>
                     <div>
                         Les deux méthodes de projections évaluées sont (1) une méthode de projection non-linéaire sur un espace <TeX>R^2</TeX> continu qu'on appelera "projection classique" (en haut sur le diagramme) et une méthode qui projette sur une grille compacte qu’on appellera "projection compacte" (en bas sur le diagramme).
@@ -134,7 +142,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
                         <Image fluid className="col-8" src="intro/pipeline-dist.png" />
                     </Row>
                     <div>
-                        Cette coloration se calcule en deux étapes. La première consiste à récupérer les voisins de chaque éléments à partie de la projection <TeX>R^2</TeX>.
+                        Cette coloration se calcule en deux étapes. La première consiste à récupérer les voisins de chaque éléments à partir de la projection <TeX>R^2</TeX>.
                         Le voisinage d'un élément <TeX>e</TeX> correspond aux plus proches éléments dans chaque secteur angulaire autour de <TeX>e</TeX>.
                         Ici, nous considérons 8 secteurs angulaires pour calculer le voisinage.
                     </div>
@@ -221,7 +229,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
                     <div>
                         Ces tâches sont réparties en 82 questions. Les colorations utilisées diffèrent suivant les tâches proposées. Certaines questions sont volontairement difficiles et demandent donc du temps pour être répondues, vous disposez en revanche d'1 minute par question pour répondre.
                         A la fin du questionnaire, nous demanderons quelles stratégies vous aurez utilisé pour répondre aux questions.
-                        Répondre correctement est plus profitable que répondre rapidement, surtout pour la tâche T4.<br/>
+                        Répondre correctement est plus profitable que répondre rapidement, surtout pour la tâche T4. Aussi, il n'y aura pas d'intrus dans les données projetées pour les tâches T1 à T3.<br/>
                         Nous allons à présent montrer comment répondre aux différentes tâches.
                     </div>
                 </div>
@@ -246,18 +254,22 @@ export class IntroComponent extends React.Component<IProps, IState> {
                 text = <div>
                 <b>T2 : Trouver quel groupe est plus proche d’un autre dans <TeX>R^N</TeX></b><br/><br/>
 
-                Pour cette tâche, nous considérerons qu’il y a soit 5, soit 7 groupes à chaque question.
+                Pour cette tâche, nous considérerons que les données générées seront composées de soit 5, soit 7 groupes pour chaque question.
                 Des questions n'auront que la coloration par étiquette, d'autres proposeront les deux colorations à l’écran.<br/>
                 Nous désignerons un groupe par sa couleur, et nous demanderons de désigner un autre groupe par sa couleur qui semble être le plus proche de celui demandé. <br/>
-                Lorsque seule la coloration par étiquette est proposée, il faut trouver des indices montrant que les groupes sont proches dans <TeX>R^N</TeX>.
-                Dans le cas de la vue par partitionnement, des éléments peuvent légèrement être rapprochés d'un autre groupe pour indiquer leur proximité dans <TeX>R^N</TeX>.
-                Dans le cas de la vue par grille, les éléments sont triés par proximité. La forme des frontières peut donner un indice sur la proximité d'un groupe: les frontières plus verticales indiquent une plus grande distance entre les deux groupes.
+                Lorsque seule la coloration par étiquette est proposée, il faut chercher des indices montrant que les groupes sont proches dans <TeX>R^N</TeX>.
+                Dans le cas de la vue classique, des éléments peuvent être rapprochés, voire même se superposer avec d'un autre groupe pour indiquer leur proximité dans <TeX>R^N</TeX>.
+                Dans le cas de la vue par grille, les éléments sont triés par proximité. La forme des frontières peut aussi indiquer la proximité d'un groupe: les frontières plus verticales indiquent une plus grande distance entre les deux groupes.
                 <Row className="justify-content-center">
-                        <Col className="col-4 justify-content-center"><Image fluid src="intro/t3-prox.png" /></Col>
-                        <Col className="col-4 justify-content-center"><Image fluid src="intro/t3-sep.png" /></Col>
+                        <Col className="col-3 justify-content-center"><Image fluid src="intro/t3-prox.png" /></Col>
+                        <Col className="col-3 justify-content-center"><Image fluid src="intro/t3-sep.png" /></Col>
                 </Row>
                 Lorsque les deux colorations sont proposées, la proximité est alors définie par la couleur de la frontière entre deux groupes sur la coloration par distances.
                 Pour les deux méthodes, il faudra donc sélectionner le groupe ayant une frontière la plus claire/jaune de celle du groupe demandé. <br/>
+                <Row className="justify-content-center">
+                        <Col className="col-5 justify-content-center"><Image fluid src="intro/dist-usage-tsne.png" /></Col>
+                        <Col className="col-5 justify-content-center"><Image fluid src="intro/dist-usage-ssm.png" /></Col>
+                </Row>
                 </div>
                 break;
             case 11:
@@ -269,17 +281,23 @@ export class IntroComponent extends React.Component<IProps, IState> {
                 text = <div>
             <b>T3 : Trouver la topologie des données dans <TeX>R^N</TeX></b><br/><br/>
 
-            Pour cette tâche, nous considèrerons qu’il y a soit 5, soit 7 groupes à chaque question.
+            Pour cette tâche, nous considérerons que les données générées seront composées de soit 5, soit 7 groupes pour chaque question.
             Des questions n'auront que la coloration par étiquette, d'autres proposeront les deux colorations à l’écran.<br/>
-            Chaque jeu de données projeté aura une topologie aillant une et une seule caractéristique parmi celle qui sont présentées ci-dessous.
-            L’objectif de la question est d’indiquer quelle est la caractéristique du jeu de données dans <TeX>R^N</TeX>.
-            Chaque caractéristique, et donc réponse, sera représentée par un diagramme.
+
+            Cette tâche a pour objectif de retrouver la topologie des données dans <TeX>R^N</TeX> en se servant de la projection proposée.
+            Chaque topologie, sera représentée par un diagramme.
             Leur signification peut être rappelée en passant le curseur de la souris sans cliquer par-dessus le diagramme.
-            Les caractéristiques possibles sont :<br/>
-            1.Tous les groupes sont bien écartés les uns des autres dans <TeX>R^N</TeX>. <img className="answer-image" src="ans/struct1.png" /><br/>
-            2.Il y a au moins un groupe positionné à l’intérieur d’un autre sans se mélanger/se superposer dans <TeX>R^N</TeX> (une sorte de "bulle").<img className="answer-image" src="ans/struct2.png" /><br/>
-            3.Il y a au moins deux groupes qui se mélangent/se superposent dans <TeX>R^N</TeX>.<img className="answer-image" src="ans/struct3.png" /><br/>
-            4.Il y a au moins deux groupes sont plus proches entre eux dans <TeX>R^N</TeX> par rapport aux autres.<img className="answer-image" src="ans/struct4.png" /><br/>
+            Si vous hésitez entre plusieurs réponses, choisissez la topologie qui vous semble être la mieux représentée sur la visualisation.
+            Les caractéristiques possibles sont :
+            <ul>
+                <li>"Partagée" : Les groupes sont plus ou moins écartés les uns des autres dans <TeX>R^N</TeX> : <img className="answer-image" src="ans/struct1.png" /></li>
+                <li>"Bulle" : Il y a au moins un groupe positionné à l’intérieur d’un autre sans se mélanger ou se superposer dans <TeX>R^N</TeX> : <img className="answer-image" src="ans/struct2.png" /></li>
+                <li>"Mélange" : Il y a au moins deux groupes qui se mélangent ou se superposent dans <TeX>R^N</TeX> : <img className="answer-image" src="ans/struct3.png" /></li>
+                <li>"Proche" : Il y a au moins deux groupes qui sont significativement plus proches entre eux dans <TeX>R^N</TeX> par rapport aux autres : <img className="answer-image" src="ans/struct4.png" /></li>
+            </ul>
+            <Row className="justify-content-center">
+                            <Image fluid className="col-8" src="intro/struct-overview.png" />
+                    </Row>
             </div>
             break;
             case 13:
@@ -295,6 +313,14 @@ export class IntroComponent extends React.Component<IProps, IState> {
                     Pour répondre à cette question, il faut trouver le nombre d’éléments dont l'étiquette est différent de ses voisins au sein du groupe demandé.
                     La réponse est à donner en utilisant le clavier à l’écran, puis en cliquant sur SUIVANT.
                     En cas d’erreur, cliquer sur ANNULER efface la réponse en cours.
+                    <Row className="justify-content-center">
+                        <Col className="col-6 justify-content-center">
+                            <Image fluid src="intro/tsneGT-out.png" />
+                        </Col>
+                        <Col className="col-6 justify-content-center">
+                            <Image fluid src="intro/ssmGT-out.png" />
+                        </Col>
+                    </Row>
                 </div>
                 break;
             case 15:
@@ -304,6 +330,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
             case 16:
                 training = false;
                 text = <div>
+                    Comme mentionné précédemment, vous disposez de 60 secondes pour répondre à chaque question. Lorsque le temps est écoulé, la dernière réponse que vous aurez sélectionnée sera enregistrée.
                     Les explications sont maintenant terminées, vous pouvez cliquer sur Commencer pour commencer l'évaluation. 
                 </div>
                 break;
@@ -315,6 +342,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
 
             return <Container className="d-flex flex-column h-75">
             <Row>{title}</Row>
+            {navigator.cookieEnabled ? "" : <Alert variant="danger">Les cookies ne sont pas activés. Ils sont nécessaire pour effectuer l'évaluation.</Alert>}
             <Row>{text}</Row>
             {training ? <TrainingComponent case={trainingPhase} key={trainingPhase} master={this} canSkip={false}/> : <Row>{nav}</Row>}
             </Container>

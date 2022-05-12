@@ -28,7 +28,8 @@ export class Question {
         public imagePaths: string[] = [],
         public answers:Answer[] = [],
         public expectedAnswer: Answer = new Answer(),
-        public skipCD: boolean = false
+        public skipCD: boolean = false,
+        public answersToRemove: string[] = []
     ) {}
 
     // e.g.: id:4,type:compare,question:Les distances A et B dans R^n sont...,path:./img/q4.png,ans:Similaire,ans:Différents,ans:Très différents
@@ -37,13 +38,18 @@ export class Question {
         args.forEach(arg => {
             let s = arg.split(":");
             let strType = s[0];
-            let strValue = s[1];
+            console.log(strType)
+            let strValue = s[1].replace("\n", "").replace("\r", "");
             if (strType == "id")
-                this.id = parseInt(strValue);
+            this.id = parseInt(strValue);
             if (strType == "type")
-                this.type = this.readTypeOfQuestion(strValue);
+            this.type = this.readTypeOfQuestion(strValue);
             if (strType == "cd"){
                 this.skipCD = strValue.includes("skip");
+            }
+            if (strType == "out") {
+                this.answersToRemove.push(strValue)
+                console.log("removed " + strValue + " answer.")
             }
             if (strType == "question")
                 this.question = strValue;

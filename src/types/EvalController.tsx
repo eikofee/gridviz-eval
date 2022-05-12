@@ -27,8 +27,15 @@ export class EvalController {
     public currentAnswerText = "";
     public currentAnswerTime = 0;
     public currentQuestionTimeStart = 0;
+    public hasAnswered: boolean = false;
 
     public previousAnswerText : string = "";
+
+    public setHasAnswered(value: boolean) {
+        this.hasAnswered = value;
+        this.evalControllerComponent?.setState({dummy: Date.now()})
+        console.log("updating state")
+    }
 
     public shuffleQuestions() {
         this.questions.sort((a, b) => Math.random() - 0.5);

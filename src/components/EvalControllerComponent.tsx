@@ -19,6 +19,7 @@ interface IState {
     ready:boolean;
     dummy: number;
     displayCooldown: number;
+    skipCooldown: number;
 }
 
 
@@ -32,6 +33,8 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
     public timeStart: number = 0;
     public introPageInit : number = 0;
     public calledTimeout : boolean = false;
+    public calledSkip : boolean = false;
+    public hasSelectedAnAnswer : boolean = false;
 
     constructor(props: any) {
         super(props);
@@ -40,16 +43,17 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             firstReady: false,
             ready: false,
             dummy: Date.now(),
-            displayCooldown: 0
+            displayCooldown: 0,
+            skipCooldown: 0
         }
         this.props.evalController.evalControllerComponent = this;
         let cookies = new Cookies();
         if (cookies.get("id") == undefined) {
-            cookies.set('id', Date.now(), { path: '/' });
-            cookies.set('currentStep', "intro", { path: '/' });
-            cookies.set('currentSlide', 0, { path: '/' });
-            cookies.set('answers', "", { path: '/' });
-            cookies.set('mailSent', "false", { path: '/' })
+            cookies.set('id', Date.now(), { path: '/' , maxAge: 86400});
+            cookies.set('currentStep', "intro", { path: '/' , maxAge: 86400});
+            cookies.set('currentSlide', 0, { path: '/' , maxAge: 86400});
+            cookies.set('answers', "", { path: '/' , maxAge: 86400});
+            cookies.set('mailSent', "false", { path: '/' , maxAge: 86400})
 
         } else {
             console.log("id found : " + cookies.get('id'));
@@ -69,13 +73,15 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
         this.intro = false;
         t.props.evalController.loadQuestionsFromFile();
         let cookies = new Cookies()
-        cookies.set("currentStep", "questions")
-        cookies.set("currentSlide", "0")
+        cookies.set("currentStep", "questions", {maxAge:86400, path:'/'})
+        cookies.set("currentSlide", "0", {path:'/', maxAge:86400})
     }
 
     cancelFunc(t: EvalControllerComponent) {
         t.timeStart = t.props.evalController.currentQuestionTimeStart;
         console.log("cancelling...")
+        t.questionComponent = null;
+        t.props.evalController.setHasAnswered(false)
         t.setState({
             currentQuestion:t.state.currentQuestion,
             firstReady:t.state.firstReady,
@@ -85,8 +91,8 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
     }
 
     proceedFunc(t: EvalControllerComponent) {
-        if (t.props.evalController.currentAnswerIndex == -1)
-            return;
+        // if (t.props.evalController.currentAnswerIndex == -1)
+        //     return;
         console.log("registering...")
         let cookies = new Cookies()
         t.timeStart = 0;
@@ -99,9 +105,12 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 t.state.currentQuestion!,
                 ans,
                 Date.now() - t.props.evalController.currentQuestionTimeStart);
-        cookies.set("answers", t.props.evalController.getResultsAsString(false));
+        cookies.set("answers", t.props.evalController.getResultsAsString(false), {maxAge: 86400, path:'/'});
         t.loadQuestion();
-        cookies.set("currentSlide", t.props.evalController.currentQuestionIndex);
+        this.questionComponent = null;
+        this.hasSelectedAnAnswer = false;
+        this.props.evalController.setHasAnswered(false);
+        cookies.set("currentSlide", t.props.evalController.currentQuestionIndex, {maxAge: 86400, path:'/'});
         console.log("done.")
     }
 
@@ -124,6 +133,19 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
         }
     }
 
+    offSkip(e: EvalControllerComponent) {
+        if (e.state.skipCooldown > 0 && e.props.evalController.getCurrentQuestion()?.type != QuestionType.Compare) {
+            e.setState({skipCooldown : e.state.skipCooldown - 1, dummy: Date.now()});
+            setTimeout( () => this.offSkip(e), 1000)
+        } else {
+            if (e.calledSkip && e.props.evalController.getCurrentQuestion()?.type != QuestionType.Compare) {
+                this.proceedFunc(e);
+            }
+            e.calledSkip = false;
+            
+        }
+    }
+
     loadQuestion() {
         console.log("loading question...")
         let q = this.props.evalController.getCurrentQuestion();
@@ -132,7 +154,8 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 currentQuestion: q,
                 firstReady: false,
                 ready: true,
-                displayCooldown: q.skipCD ? 0 : 3
+                displayCooldown: q.skipCD ? 0 : 3,
+                skipCooldown: q.skipCD ? 0 : 63,
             });
         console.log(q)
             // setTimeout(() => this.offCooldown(this), 3000)
@@ -147,21 +170,18 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             let cookies = new Cookies();
             if (cookies.get('mailSent') == "false") {
                 this.sendMailAnswers(this.props.evalController.getResultsAsString(true), cookies.get("id"))
-                cookies.set('mailSent', "true")
+                cookies.set('mailSent', "true", {maxAge: 86400, path:'/'})
             }
         }
         console.log("done");
     }
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
-        console.log("change in state:")
-        console.log(prevState)
-        console.log(this.state)
-        console.log("---")
         if (!this.ready && !this.ended && this.state.firstReady) {
             this.ready = true;
             this.loadQuestion();
         }
+        this.hasSelectedAnAnswer = this.props.evalController.hasAnswered;
     }
 
 
@@ -170,10 +190,11 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
         let cookies = new Cookies()
         if (this.ready) {
             if (this.state.displayCooldown <= 0) {
+                if (this.questionComponent == null) {
+                    let q = <QuestionComponent useExplain={false} key={"questionComponent" + Date.now()} question={this.state.currentQuestion!} evalController={this.props.evalController!} timeStart={this.timeStart}/>;
+                    this.questionComponent = q;
+                }
 
-                console.log(this.props.evalController.questions)
-                let q = <QuestionComponent useExplain={false} key={"questionComponent" + Date.now()} question={this.state.currentQuestion!} evalController={this.props.evalController!} timeStart={this.timeStart}/>;
-                this.questionComponent = q;
                 let divs = <Container fluid style={{maxWidth:"1200px" }} className="d-grid gap-2">
                 <Row>
                     Question {this.props.evalController.currentQuestionIndex + 1}/{this.props.evalController.getQuestionCount()}
@@ -181,11 +202,11 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 <Row>
                     {this.questionComponent}
                 </Row>
-                <Row className="justify-content-center">
-                    <Col className="col-auto me-auto"><Button disabled={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count} variant="outline-warning" onClick={() => this.cancelFunc(this)} >Annuler</Button></Col>
+                <div className="d-flex justify-content-between">
+                    <Button disabled={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count || !this.props.evalController.hasAnswered} variant={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count || !this.props.evalController.hasAnswered ?"outline-warning" : "warning"} onClick={() => this.cancelFunc(this)} >Annuler</Button>
                         {/* <div className={proceedEnabled ? "control-proceed" : "control-proceed disabled"} onClick={proceedEnabled ? () => this.proceedFunc(this) : () => {}}>Valider</div> */}
-                        <Col className="col-auto"><Button className="outline-danger" onClick={() => this.proceedFunc(this)}>Valider</Button></Col>
-                    </Row>
+                        <Button disabled={!this.props.evalController.hasAnswered} variant={this.props.evalController.hasAnswered ? "success" : "outline-success"} onClick={() => this.proceedFunc(this)}>Valider{this.props.evalController.getCurrentQuestion()?.type != QuestionType.Compare ? " (" + this.state.skipCooldown + "s)" : ""}</Button>
+                    </div>
                 </Container>
                     return divs;
             } else {
@@ -194,9 +215,15 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                     Prochaine question dans {this.state.displayCooldown} seconde{this.state.displayCooldown > 1 ? "s":""}.
                 </Row>
                 </Container>
-                if (!this.calledTimeout) {
-                    setTimeout(() => this.offCooldown(this), 1000);
-                    this.calledTimeout = true;
+                if (!this.props.evalController.getCurrentQuestion()?.skipCD) {
+                    if (!this.calledTimeout) {
+                        setTimeout(() => this.offCooldown(this), 1000);
+                        this.calledTimeout = true;
+                    }
+                    if (!this.calledSkip) {
+                        setTimeout(() => this.offSkip(this), 1000)
+                        this.calledSkip = true;
+                    }
                 }
                 return divs;
             }
@@ -212,11 +239,11 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             const fileDownloadUrl = URL.createObjectURL(blob);
             return <Container fluid style={{maxWidth:"1200px"}} className="d-block gap-5 flex-fill mh-100">
                 <Row className="justify-content-center d-grid">
-                    <Col className="col-auto"> Evaluation terminée, merci pour votre participation. </Col>
+                    <Col className="col-auto"> L'évaluation est maintenant terminée, merci beaucoup pour votre participation. </Col>
                 </Row>
                 <Row className="justify-content-center d-grid flex-fill">
                     <Col className="col-auto">
-                    Veuillez maintenant remplir le questionnaire en suivant ce lien : <a target="_blank" href="https://forms.gle/YtbcbCtS8RbNUeou6">https://forms.gle/YtbcbCtS8RbNUeou6</a> avec l'identifiant {cookies.get("id")}.<br/>
+                    Nous souhaiterions maintenant avoir vos retours sur votre utilisation des différentes méthodes de projection et de coloration. Nous avons donc préparé un questionnaire pour reccueillir vos remarques sur ce lien : <a target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLScSkqhEBLtNV2CCk0TT8LrZM3W3O7OPaAgObjzlxvwXYa6cOA/viewform?usp=pp_url&entry.472158829=" + cookies.get("id")}>https://forms.gle/YtbcbCtS8RbNUeou6</a>. Un identifiant devrait être pré-rempli pour la première question, afin de faire le lien entre vos réponses sur l'évaluation et le questionnaire. Si ce n'est pas le cas, l'identifiant à renseigner sur la première question est: {cookies.get("id")}.<br/>
                     </Col>
                 </Row>
                 <Row className="justify-content-center d-grid">

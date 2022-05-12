@@ -19,6 +19,8 @@ interface IState {
     firstReady: boolean;
     ready:boolean;
     dummy: number;
+    nextQuestionTimer: number;
+    startedTimer: boolean;
 }
 
 export class TrainingComponent extends React.Component<IProps, IState> {
@@ -43,32 +45,34 @@ export class TrainingComponent extends React.Component<IProps, IState> {
         switch(props.case) {
             case "t1":
             this.questionsAsString=
-                `id:1,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,expect:purple
-                id:2,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,expect:blue
+                `id:1,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,expect:violet
+                id:2,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,expect:bleu
                 id:3,type:color5,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/5-c-3-tsne-gt.png,expect:orange
                 id:4,type:color8,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/8-a-0-ssm-gt.png,expect:orange`
             break;
             
             case "t2":
             this.questionsAsString=
-                `id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:blue
-                id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:purple
-                id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:green
-                id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:brown`
+                `id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:bleu,out:violet
+                id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:violet,out:bleu
+                id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:vert,out:orange
+                id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:marron,out:vert`
             break;
             
             case "t3":
                 this.questionsAsString=
-                `id:2,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:split
-                id:4,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bubble
-                id:8,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:close
-                id:6,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mix`
+                `id:2,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:partagé
+                id:4,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bulle
+                id:8,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:proche
+                id:6,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mélange`
             break;
 
             case "t4":
                 this.questionsAsString=
                 `id:1,type:count,question:Combien y'a-t-il d'intrus dans le groupe violet ?,path:./train/t5/4-a-1-ssm-gt.png,expect:4
-                id:2,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1`
+                id:2,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./train/t5/5-a0.006-4-ssm-gt.png,expect:14
+                id:3,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1
+                id:4,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./train/t5/3-a0-0-tsne-gt.png,expect:0`
             break;
         }
         
@@ -83,7 +87,9 @@ export class TrainingComponent extends React.Component<IProps, IState> {
             currentQuestion: this.questions[this.currentQuestionIndex],
             firstReady: false,
             ready: true,
-            dummy: Date.now()
+            dummy: Date.now(),
+            nextQuestionTimer: 0,
+            startedTimer: false
         }
         this.ready = true;
     }
@@ -101,6 +107,20 @@ export class TrainingComponent extends React.Component<IProps, IState> {
         t.props.master.prevPage(t.props.master);
     }
 
+    timeoutFunction(t: TrainingComponent) {
+        if (t.state.nextQuestionTimer > 0) {
+            if (t.state.startedTimer) {
+                t.setState({nextQuestionTimer : t.state.nextQuestionTimer - 1})
+                setTimeout(() => this.timeoutFunction(t), 1000)
+            }
+        } else {
+            if (t.state.startedTimer) {
+                this.proceedFunc(t)
+                t.setState({startedTimer: false})
+            }
+        }
+    }
+
     proceedFunc(t: TrainingComponent) {
         if (!t.hasAnswered) {
             console.log(t);
@@ -110,8 +130,11 @@ export class TrainingComponent extends React.Component<IProps, IState> {
                     currentQuestion:t.state.currentQuestion,
                     firstReady:t.state.firstReady,
                     ready:t.state.ready,
-                    dummy:Date.now()
+                    dummy:Date.now(),
+                    nextQuestionTimer: 4,
+                    startedTimer: true
                 });
+                setTimeout(() => this.timeoutFunction(t), 1000)
             } else {
                 t.hasWrongAnswer = true;
                 t.setState({
@@ -132,6 +155,7 @@ export class TrainingComponent extends React.Component<IProps, IState> {
                 currentQuestion:t.questions[t.currentQuestionIndex],
                 firstReady:t.state.firstReady,
                 ready:t.state.ready,
+                startedTimer: false,
                 dummy:Date.now()
             });
             t.hasAnswered = false;
@@ -191,11 +215,11 @@ export class TrainingComponent extends React.Component<IProps, IState> {
                 <Row className="justify-content-center">
                     {hint}
                 </Row>
-                <Row className="justify-content-center">
-                    <Col className="col-auto me-auto"><Button variant="primary" onClick={() => this.goBack(this)}>Précédent</Button></Col>
-                    {this.state.currentQuestion?.type === QuestionType.Count ? <Col className="col-auto me-auto"><Button variant="warning" onClick={() => this.cancelFunc(this)}>Annuler</Button></Col> : ""}
-                    <Col className="col-auto"><Button variant={this.hasAnswered && !this.hasWrongAnswer ? "primary" : "success"} onClick={() => this.proceedFunc(this)}>{this.hasAnswered && !this.hasWrongAnswer ? "Suivant" : "Valider la réponse"}</Button></Col>
-                </Row>
+                <div className="d-flex justify-content-between">
+                    <Button variant="primary" onClick={() => this.goBack(this)}>Revenir aux explications</Button>
+                    {this.state.currentQuestion?.type === QuestionType.Count ? <Button variant="warning" onClick={() => this.cancelFunc(this)}>Annuler</Button> : ""}
+                    <Button variant={this.hasAnswered && !this.hasWrongAnswer ? "primary" : "success"} onClick={() => this.proceedFunc(this)}>{this.hasAnswered && !this.hasWrongAnswer ? "Suivant (" + this.state.nextQuestionTimer + "s)" : "Valider la réponse"}</Button>
+                </div>
             </div>
                 return divs;
         } else {
