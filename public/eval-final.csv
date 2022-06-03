@@ -39,7 +39,7 @@ id:36,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans
 id:37,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-6-tsne-gt.png,path:./final/t2/5-b0-6-tsne-dist.png,out:orange
 id:38,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-6-ssm-gt.png,path:./final/t2/5-c0-6-ssm-dist.png,out:violet
 id:39,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-8-tsne-gt.png,path:./final/t2/7-d0-8-tsne-dist.png,out:bleu
-id:40,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-b0-5-tsne-gt.png,path:./final/t2/7-b0-5-tsne-dist.png,out:vert
+id:40,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-b0-7-tsne-gt.png,path:./final/t2/7-b0-7-tsne-dist.png,out:vert
 id:0,type:compare,question:Tâche T3 - Trouver la topologie des données dans RN,ans:Je suis prêt(e),cd:skip
 id:41,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-5-tsne-gt.png
 id:42,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-4-ssm-gt.png

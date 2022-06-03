@@ -7,6 +7,7 @@ import { QuestionComponent } from "./QuestionComponent";
 import emailjs from '@emailjs/browser';
 import Cookies from 'universal-cookie';
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { LocaleManager } from "../LocaleManager";
 
 
 interface IProps {
@@ -154,7 +155,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 currentQuestion: q,
                 firstReady: false,
                 ready: true,
-                displayCooldown: q.skipCD ? 0 : 3,
+                displayCooldown: q.skipCD ? 0 : 2,
                 skipCooldown: q.skipCD ? 0 : 63,
             });
         console.log(q)
@@ -203,16 +204,16 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                     {this.questionComponent}
                 </Row>
                 <div className="d-flex justify-content-between">
-                    <Button disabled={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count || !this.props.evalController.hasAnswered} variant={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count || !this.props.evalController.hasAnswered ?"outline-warning" : "warning"} onClick={() => this.cancelFunc(this)} >Annuler</Button>
+                    <Button disabled={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count || !this.props.evalController.hasAnswered} variant={this.props.evalController.getCurrentQuestion()?.type != QuestionType.Count || !this.props.evalController.hasAnswered ?"outline-warning" : "warning"} onClick={() => this.cancelFunc(this)} >{LocaleManager.getAnswerText("cancel")}</Button>
                         {/* <div className={proceedEnabled ? "control-proceed" : "control-proceed disabled"} onClick={proceedEnabled ? () => this.proceedFunc(this) : () => {}}>Valider</div> */}
-                        <Button disabled={!this.props.evalController.hasAnswered} variant={this.props.evalController.hasAnswered ? "success" : "outline-success"} onClick={() => this.proceedFunc(this)}>Valider{this.props.evalController.getCurrentQuestion()?.type != QuestionType.Compare ? " (" + this.state.skipCooldown + "s)" : ""}</Button>
+                        <Button disabled={!this.props.evalController.hasAnswered} variant={this.props.evalController.hasAnswered ? "success" : "outline-success"} onClick={() => this.proceedFunc(this)}>{LocaleManager.getAnswerText("proceed")}{this.props.evalController.getCurrentQuestion()?.type != QuestionType.Compare ? " (" + this.state.skipCooldown + "s)" : ""}</Button>
                     </div>
                 </Container>
                     return divs;
             } else {
                 let divs = <Container fluid style={{maxWidth:"1200px" }} className="d-grid gap-2">
                 <Row>
-                    Prochaine question dans {this.state.displayCooldown} seconde{this.state.displayCooldown > 1 ? "s":""}.
+                    {LocaleManager.getText("next-question-1")}{this.state.displayCooldown} {LocaleManager.getText("next-question-2")}{this.state.displayCooldown > 1 ? "s":""}.
                 </Row>
                 </Container>
                 if (!this.props.evalController.getCurrentQuestion()?.skipCD) {
@@ -239,16 +240,17 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
             const fileDownloadUrl = URL.createObjectURL(blob);
             return <Container fluid style={{maxWidth:"1200px"}} className="d-block gap-5 flex-fill mh-100">
                 <Row className="justify-content-center d-grid">
-                    <Col className="col-auto"> L'évaluation est maintenant terminée, merci beaucoup pour votre participation. </Col>
+                    <Col className="col-auto">{LocaleManager.getText("end-1")}</Col>
                 </Row>
                 <Row className="justify-content-center d-grid flex-fill">
                     <Col className="col-auto">
-                    Nous souhaiterions maintenant avoir vos retours sur votre utilisation des différentes méthodes de projection et de coloration. Nous avons donc préparé un questionnaire pour reccueillir vos remarques sur ce lien : <a target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLScSkqhEBLtNV2CCk0TT8LrZM3W3O7OPaAgObjzlxvwXYa6cOA/viewform?usp=pp_url&entry.472158829=" + cookies.get("id")}>https://forms.gle/YtbcbCtS8RbNUeou6</a>. Un identifiant devrait être pré-rempli pour la première question, afin de faire le lien entre vos réponses sur l'évaluation et le questionnaire. Si ce n'est pas le cas, l'identifiant à renseigner sur la première question est: {cookies.get("id")}.<br/>
+                    {LocaleManager.getText("end-2")}
+                    <a target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLScSkqhEBLtNV2CCk0TT8LrZM3W3O7OPaAgObjzlxvwXYa6cOA/viewform?usp=pp_url&entry.472158829=" + cookies.get("id")}>https://forms.gle/YtbcbCtS8RbNUeou6</a>. {LocaleManager.getText("end-3")}{cookies.get("id")}.<br/>
                     </Col>
                 </Row>
                 <Row className="justify-content-center d-grid">
                     <Col className="col-auto">
-                        <a href={fileDownloadUrl} download={"answers-" + cookies.get("id")}>Télécharger les réponses</a>
+                        <a href={fileDownloadUrl} download={"answers-" + cookies.get("id")}>{LocaleManager.getText("download-answers")}</a>
                     </Col>
                 </Row>
             </Container>

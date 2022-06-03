@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import 'katex/dist/katex.min.css';
 import TeX from '@matejmazur/react-katex';
+import { LocaleManager } from "../LocaleManager";
 
 interface IProps {
     evalController: EvalController;
@@ -71,7 +72,7 @@ export class QuestionComponent extends React.Component<IProps, IState> {
     }
 
     generateStructKeyboard(out: string[] = []) : JSX.Element[] {
-        let structNames = ["partagé", "bulle", "mélange", "proche"]
+        let structNames = ["split", "bubble", "mix", "close"]
         let f = (t: QuestionComponent, i: number) => {
             t.setState({
                 hasAnswered: true,
@@ -82,10 +83,10 @@ export class QuestionComponent extends React.Component<IProps, IState> {
             });
         }
 
-        let s1 = !out.includes("partagé") ? <Button variant={this.state.answerText == "partagé" ? "success" : "outline-secondary"} onClick={() => f(this, 0)}><Image fluid src="ans/struct1.png" title="'Partagée' : Les groupes sont plus ou moins écartés les uns des autres dans R^N" className="answer-image"/></Button> : <div></div>
-        let s2 = !out.includes("bulle") ? <Button variant={this.state.answerText == "bulle" ? "success" : "outline-secondary"} onClick={() => f(this, 1)}><Image fluid src="ans/struct2.png" title="'Bulle' : Il y a au moins un groupe positionné à l’intérieur d’un autre sans se mélanger ou se superposer dans R^N" className="answer-image"/></Button> : <div></div>
-        let s3 = !out.includes("mélange") ? <Button variant={this.state.answerText == "mélange" ? "success" : "outline-secondary"} onClick={() => f(this, 2)}><Image fluid src="ans/struct3.png" title="'Mélange' : Il y a au moins deux groupes qui se mélangent ou se superposent dans R^N" className="answer-image"/></Button> : <div></div>
-        let s4 = !out.includes("proche") ? <Button variant={this.state.answerText == "proche" ? "success" : "outline-secondary"} onClick={() => f(this, 3)}><Image fluid src="ans/struct4.png" title="'Proche' : Il y a au moins deux groupes qui sont significativement plus proches entre eux dans R^N par rapport aux autres" className="answer-image"/></Button> : <div></div>
+        let s1 = !out.includes("split") ? <Button variant={this.state.answerText == "split" ? "success" : "outline-secondary"} onClick={() => f(this, 0)}><Image fluid src="ans/struct1.png" title={LocaleManager.getAnswerText("title-split")} className="answer-image"/></Button> : <div></div>
+        let s2 = !out.includes("bubble") ? <Button variant={this.state.answerText == "bubble" ? "success" : "outline-secondary"} onClick={() => f(this, 1)}><Image fluid src="ans/struct2.png" title={LocaleManager.getAnswerText("title-bubble")} className="answer-image"/></Button> : <div></div>
+        let s3 = !out.includes("mix") ? <Button variant={this.state.answerText == "mix" ? "success" : "outline-secondary"} onClick={() => f(this, 2)}><Image fluid src="ans/struct3.png" title={LocaleManager.getAnswerText("title-mix")} className="answer-image"/></Button> : <div></div>
+        let s4 = !out.includes("close") ? <Button variant={this.state.answerText == "close" ? "success" : "outline-secondary"} onClick={() => f(this, 3)}><Image fluid src="ans/struct4.png" title={LocaleManager.getAnswerText("title-close")} className="answer-image"/></Button> : <div></div>
         let result = [s1, s2, s3, s4]; // ...
         return result;
     }
@@ -93,13 +94,13 @@ export class QuestionComponent extends React.Component<IProps, IState> {
     generateColorKeyboard(i : number, out: string[] = []) : JSX.Element[] {
         let result = []
         let colorArray = [
-            "rouge", "bleu", "vert", "violet", "orange", "jaune", "marron", "vert", "gris"
+            "red", "blue", "green", "purple", "orange", "yellow", "brown", "pink", "gray"
         ]
         let f = (t: QuestionComponent, index : number) => {
             t.setState({
                 hasAnswered: true,
                 answerIndex: index,
-                answerText: t.state.answerIndex == 0 ? "" : t.state.answerIndex == i ? "aucune" : index == i ? "aucune" : colorArray[index],
+                answerText: t.state.answerIndex == 0 ? "" : t.state.answerIndex == i ? "none" : index == i ? "none" : colorArray[index],
                 answerTime: t.state.answerTime,
                 questionTimeStart: t.state.questionTimeStart
             });
@@ -108,7 +109,7 @@ export class QuestionComponent extends React.Component<IProps, IState> {
             let className = this.state.answerIndex == ii ? "success" : "outline-secondary";
             let a = 
                 <Button variant={className} key={"a" + colorArray[ii]} onClick={() => f(this, ii)}>
-                    <Image fluid src={"ans/" + colorArray[ii] + ".jpg"} title={colorArray[ii]} className="answer-color"/>
+                    <Image fluid src={"ans/" + colorArray[ii] + ".jpg"} title={LocaleManager.getAnswerText(colorArray[ii])} className="answer-color"/>
                 </Button>
                 console.log(out)
             if (!out.includes(colorArray[ii])) {
@@ -177,13 +178,13 @@ export class QuestionComponent extends React.Component<IProps, IState> {
         let questionText = <Container className=" d-flex justify-content-center gap-1">{this.props.question.question}</Container>
         let questionTextArray = this.props.question.question.split("RN")
         if (questionTextArray.length > 1) {
-            questionText = <Container className=" d-flex justify-content-center gap-1">{questionTextArray[0]}<TeX>R^N</TeX>{questionTextArray[1]}</Container>
+            questionText = <Container className=" d-flex justify-content-center gap-1">{questionTextArray[0]}<TeX>{`\\mathbb{R}^N`}</TeX>{questionTextArray[1]}</Container>
         }
         let images = imagesPaths.map(p => <Col xs={6}><Image src={p} title="question"/></Col>);
         let result = <Container fluid className="d-flex flex-column gap-2">
             <Row className="justify-content-center">{images}</Row>
             {questionText}
-            {this.hasLegend ? <Row className="justify-content-center"><Col xs={3}><Image fluid src="./intro/legend.png" className="legend"/></Col></Row> : ""}
+            {this.hasLegend ? <Row className="justify-content-center"><Col xs={3}><Image fluid src={LocaleManager.getPath("legend")} className="legend"/></Col></Row> : ""}
             {this.props.question.type == QuestionType.Count ? <Row className="justify-content-center">{this.state.hasAnswered ? this.state.answerText : "..."}</Row>:""}
             <div className="d-flex justify-content-center">{answers}</div>
             {answers2.length > 0 ? <div className="d-flex justify-content-center">{answers2}</div> : ""}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, Button, Col, Row } from "react-bootstrap";
 import { ClassificationTypeNames } from "typescript";
+import { Locale, LocaleManager } from "../LocaleManager";
 import { Answer } from "../types/Answer";
 import { EvalController } from "../types/EvalController";
 import { Question, QuestionType } from "../types/Question";
@@ -23,6 +24,10 @@ interface IState {
     startedTimer: boolean;
 }
 
+interface LocaleQuestions {
+    [key:string]:string
+}
+
 export class TrainingComponent extends React.Component<IProps, IState> {
 
     public ready: boolean = false;
@@ -35,6 +40,44 @@ export class TrainingComponent extends React.Component<IProps, IState> {
     public hasAnswered = false;
     public hasWrongAnswer = false;
 
+    public frenchQuestions : LocaleQuestions = {
+        "t1":`id:1,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,expect:violet
+        id:2,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,expect:bleu
+        id:3,type:color5,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/5-c-3-tsne-gt.png,expect:orange
+        id:4,type:color8,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/8-a-0-ssm-gt.png,expect:orange`,
+        "t2":`id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:bleu,out:violet
+        id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:violet,out:bleu
+        id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:vert,out:orange
+        id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:marron,out:vert`,
+        "t3":`id:2,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:partagé
+        id:4,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bulle
+        id:8,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:proche
+        id:6,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mélange`,
+        "t4":`id:1,type:count,question:Combien y'a-t-il d'intrus dans le groupe violet ?,path:./train/t5/4-a-1-ssm-gt.png,expect:4
+        id:2,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./train/t5/5-a0.006-4-ssm-gt.png,expect:14
+        id:3,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1
+        id:4,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./train/t5/3-a0-0-tsne-gt.png,expect:0`
+    }
+
+    public englishQuestions : LocaleQuestions = {
+        "t1":`id:1,type:color4,question:What is the most represented group label ?,path:./train/t2/4-a-0-ssm-gt.png,expect:purple
+        id:2,type:color4,question:What is the most represented group label ?,path:./train/t2/4-a-1-tsne-gt.png,expect:blue
+        id:3,type:color5,question:What is the most represented group label ?,path:./train/t2/5-c-3-tsne-gt.png,expect:orange
+        id:4,type:color8,question:What is the most represented group label ?,path:./train/t2/8-a-0-ssm-gt.png,expect:orange`,
+        "t2":`id:6,type:color5,question:Which group is closest to the purple group in RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:blue,out:purple
+        id:7,type:color5,question:Which group is closest to the blue group in RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:purple,out:blue
+        id:5,type:color5,question:Which group is closest to the orange group in RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:green,out:orange
+        id:8,type:color7,question:Which group is closest to the green group in RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:brown,out:green`,
+        "t3":`id:2,type:struct,question:What is the data topology in RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:split
+        id:4,type:struct,question:What is the data topology in RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bubble
+        id:8,type:struct,question:What is the data topology in RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:clone
+        id:6,type:struct,question:What is the data topology in RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mix`,
+        "t4":`id:1,type:count,question:How many outliers are there in the purple group ?,path:./train/t5/4-a-1-ssm-gt.png,expect:4
+        id:2,type:count,question:How many outliers are there in the green group ?,path:./train/t5/5-a0.006-4-ssm-gt.png,expect:14
+        id:3,type:count,question:How many outliers are there in the blue group ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1
+        id:4,type:count,question:How many outliers are there in the red group ?,path:./train/t5/3-a0-0-tsne-gt.png,expect:0`
+    }
+
 
     public dummyEvalController: EvalController;
 
@@ -42,38 +85,14 @@ export class TrainingComponent extends React.Component<IProps, IState> {
         super(props);
         
         this.dummyEvalController = new EvalController();
-        switch(props.case) {
-            case "t1":
-            this.questionsAsString=
-                `id:1,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,expect:violet
-                id:2,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,expect:bleu
-                id:3,type:color5,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/5-c-3-tsne-gt.png,expect:orange
-                id:4,type:color8,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/8-a-0-ssm-gt.png,expect:orange`
-            break;
-            
-            case "t2":
-            this.questionsAsString=
-                `id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:bleu,out:violet
-                id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:violet,out:bleu
-                id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:vert,out:orange
-                id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:marron,out:vert`
-            break;
-            
-            case "t3":
-                this.questionsAsString=
-                `id:2,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:partagé
-                id:4,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bulle
-                id:8,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:proche
-                id:6,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mélange`
-            break;
+        switch(LocaleManager.currentLocale) {
+            case Locale.French:
+                this.questionsAsString = this.frenchQuestions[props.case]
+                break;
+            default:
+                this.questionsAsString = this.englishQuestions[props.case]
+                break;
 
-            case "t4":
-                this.questionsAsString=
-                `id:1,type:count,question:Combien y'a-t-il d'intrus dans le groupe violet ?,path:./train/t5/4-a-1-ssm-gt.png,expect:4
-                id:2,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./train/t5/5-a0.006-4-ssm-gt.png,expect:14
-                id:3,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1
-                id:4,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./train/t5/3-a0-0-tsne-gt.png,expect:0`
-            break;
         }
         
         let lines = this.questionsAsString.split('\n');
@@ -202,24 +221,24 @@ export class TrainingComponent extends React.Component<IProps, IState> {
             let hint = <span></span>;
             if (this.hasAnswered && !this.hasWrongAnswer) {
                 if (this.currentQuestionIndex == this.questions.length - 1) {
-                    hint = <Alert variant="success">Correct ! Cliquer sur Suivant pour passer à la tâche suivante.</Alert>;
+                    hint = <Alert variant="success">{LocaleManager.getAnswerText("alert-correct-1")}</Alert>;
                 } else {
-                    hint = <Alert variant="success">Correct ! Cliquer sur Suivant pour passer à l'essai suivant.</Alert>;
+                    hint = <Alert variant="success">{LocaleManager.getAnswerText("alert-correct-2")}</Alert>;
                 }
             } else if (this.hasWrongAnswer) {
-                hint = <Alert variant="danger">Incorrect ! La bonne réponse est {this.state.currentQuestion?.expectedAnswer.label}.</Alert>;
+                hint = <Alert variant="danger">{LocaleManager.getAnswerText("alert-incorrect")}"{LocaleManager.getAnswerText(this.state.currentQuestion?.expectedAnswer.label!)}".</Alert>;
                 this.hasWrongAnswer = false;
             }
             let divs = <div className="d-grid gap-2">
                 {this.questionComponent}
+                <div className="d-flex justify-content-between">
+                    <Button variant="primary" onClick={() => this.goBack(this)}>{LocaleManager.getAnswerText("back-to-intro")}</Button>
+                    {this.state.currentQuestion?.type === QuestionType.Count ? <Button variant="warning" onClick={() => this.cancelFunc(this)}>{LocaleManager.getAnswerText("cancel")}</Button> : ""}
+                    <Button variant={this.hasAnswered && !this.hasWrongAnswer ? "primary" : "success"} onClick={() => this.proceedFunc(this)}>{this.hasAnswered && !this.hasWrongAnswer ? LocaleManager.getAnswerText("next") + " (" + this.state.nextQuestionTimer + "s)" : LocaleManager.getAnswerText("proceed")}</Button>
+                </div>
                 <Row className="justify-content-center">
                     {hint}
                 </Row>
-                <div className="d-flex justify-content-between">
-                    <Button variant="primary" onClick={() => this.goBack(this)}>Revenir aux explications</Button>
-                    {this.state.currentQuestion?.type === QuestionType.Count ? <Button variant="warning" onClick={() => this.cancelFunc(this)}>Annuler</Button> : ""}
-                    <Button variant={this.hasAnswered && !this.hasWrongAnswer ? "primary" : "success"} onClick={() => this.proceedFunc(this)}>{this.hasAnswered && !this.hasWrongAnswer ? "Suivant (" + this.state.nextQuestionTimer + "s)" : "Valider la réponse"}</Button>
-                </div>
             </div>
                 return divs;
         } else {
