@@ -1,0 +1,78 @@
+id:0,type:compare,question:Task T1 - Find the most represented group label,ans:I am ready,cd:skip
+id:1,type:color5,question:What is the most represented group label ?,path:./final/t1/5-d0-4-ssm-gt.png
+id:2,type:color4,question:What is the most represented group label ?,path:./final/t1/4-a0-7-tsne-gt.png
+id:3,type:color5,question:What is the most represented group label ?,path:./final/t1/5-b0-1-ssm-gt.png
+id:4,type:color5,question:What is the most represented group label ?,path:./final/t1/5-b0-2-tsne-gt.png
+id:5,type:color6,question:What is the most represented group label ?,path:./final/t1/6-a0-0-ssm-gt.png
+id:6,type:color5,question:What is the most represented group label ?,path:./final/t1/5-c0-7-tsne-gt.png
+id:7,type:color3,question:What is the most represented group label ?,path:./final/t1/3-a0-0-ssm-gt.png
+id:8,type:color5,question:What is the most represented group label ?,path:./final/t1/5-c0-6-ssm-gt.png
+id:9,type:color5,question:What is the most represented group label ?,path:./final/t1/5-a0-1-ssm-gt.png
+id:10,type:color6,question:What is the most represented group label ?,path:./final/t1/6-a0-2-tsne-gt.png
+id:11,type:color5,question:What is the most represented group label ?,path:./final/t1/5-d0-5-tsne-gt.png
+id:12,type:color4,question:What is the most represented group label ?,path:./final/t1/4-a0-5-ssm-gt.png
+id:13,type:color5,question:What is the most represented group label ?,path:./final/t1/5-a0-7-tsne-gt.png
+id:14,type:color3,question:What is the most represented group label ?,path:./final/t1/3-a0-8-tsne-gt.png
+id:15,type:color8,question:What is the most represented group label ?,path:./final/t1/8-a0-6-ssm-gt.png
+id:16,type:color8,question:What is the most represented group label ?,path:./final/t1/8-a0-9-tsne-gt.png
+id:0,type:compare,question:Task T2 - Find which group is the closest to another in RN,ans:I am ready,cd:skip
+id:17,type:color5,question:Which group is closest to the purple group in RN ?,path:./final/t2/5-c0-2-ssm-gt.png,out:purple
+id:18,type:color5,question:Which group is closest to the green group in RN ?,path:./final/t2/5-d0-6-tsne-gt.png,out:green
+id:19,type:color7,question:Which group is closest to the purple group in RN ?,path:./final/t2/7-c0-3-tsne-gt.png,out:purple
+id:20,type:color7,question:Which group is closest to the green group in RN ?,path:./final/t2/7-d0-0-ssm-gt.png,out:green
+id:21,type:color7,question:Which group is closest to the blue group in RN ?,path:./final/t2/7-d0-5-tsne-gt.png,out:blue
+id:22,type:color7,question:Which group is closest to the purple group in RN ?,path:./final/t2/7-b0-4-ssm-gt.png,out:purple
+id:23,type:color5,question:Which group is closest to the blue group in RN ?,path:./final/t2/5-b0-0-ssm-gt.png,out:blue
+id:24,type:color5,question:Which group is closest to the blue group in RN ?,path:./final/t2/5-c0-9-tsne-gt.png,out:blue
+id:25,type:color5,question:Which group is closest to the orange group in RN ?,path:./final/t2/5-b0-9-tsne-gt.png,out:orange
+id:26,type:color7,question:Which group is closest to the brown group in RN ?,path:./final/t2/7-c0-6-ssm-gt.png,out:brown
+id:27,type:color5,question:Which group is closest to the rouge group in RN ?,path:./final/t2/5-d0-4-ssm-gt.png,out:red
+id:28,type:color7,question:Which group is closest to the orange group in RN ?,path:./final/t2/7-b0-6-tsne-gt.png,out:orange
+id:29,type:color7,question:Which group is closest to the yellow group in RN ?,path:./final/t2/7-b0-2-ssm-gt.png,path:./final/t2/7-b0-2-ssm-dist.png,out:yellow
+id:30,type:color7,question:Which group is closest to the brown group in RN ?,path:./final/t2/7-c0-4-tsne-gt.png,path:./final/t2/7-c0-4-tsne-dist.png,out:brown
+id:31,type:color5,question:Which group is closest to the blue group in RN ?,path:./final/t2/5-c0-5-tsne-gt.png,path:./final/t2/5-c0-5-tsne-dist.png,out:blue
+id:32,type:color5,question:Which group is closest to the orange group in RN ?,path:./final/t2/5-b0-5-ssm-gt.png,path:./final/t2/5-b0-5-ssm-dist.png,out:orange
+id:33,type:color7,question:Which group is closest to the rouge group in RN ?,path:./final/t2/7-c0-9-ssm-gt.png,path:./final/t2/7-c0-9-ssm-dist.png,out:red
+id:34,type:color7,question:Which group is closest to the green group in RN ?,path:./final/t2/7-d0-4-ssm-gt.png,path:./final/t2/7-d0-4-ssm-dist.png,out:green
+id:35,type:color5,question:Which group is closest to the rouge group in RN ?,path:./final/t2/5-d0-3-ssm-gt.png,path:./final/t2/5-d0-3-ssm-dist.png,out:red
+id:36,type:color5,question:Which group is closest to the blue group in RN ?,path:./final/t2/5-d0-5-tsne-gt.png,path:./final/t2/5-d0-5-tsne-dist.png,out:blue
+id:37,type:color5,question:Which group is closest to the orange group in RN ?,path:./final/t2/5-b0-6-tsne-gt.png,path:./final/t2/5-b0-6-tsne-dist.png,out:orange
+id:38,type:color5,question:Which group is closest to the purple group in RN ?,path:./final/t2/5-c0-6-ssm-gt.png,path:./final/t2/5-c0-6-ssm-dist.png,out:purple
+id:39,type:color7,question:Which group is closest to the blue group in RN ?,path:./final/t2/7-d0-8-tsne-gt.png,path:./final/t2/7-d0-8-tsne-dist.png,out:blue
+id:40,type:color7,question:Which group is closest to the green group in RN ?,path:./final/t2/7-b0-7-tsne-gt.png,path:./final/t2/7-b0-7-tsne-dist.png,out:green
+id:0,type:compare,question:Task T3 - Find the topology of the data in RN,ans:I am ready,cd:skip
+id:41,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-d0-5-tsne-gt.png
+id:42,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-d0-4-ssm-gt.png
+id:43,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-a0-5-ssm-gt.png
+id:46,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-a0-1-tsne-gt.png
+id:48,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-b0-3-tsne-gt.png
+id:49,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-d0-2-tsne-gt.png
+id:50,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-c0-6-tsne-gt.png
+id:51,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-a0-3-tsne-gt.png
+id:52,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-a0-7-ssm-gt.png
+id:53,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-b0-4-ssm-gt.png
+id:55,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-c0-4-ssm-gt.png
+id:56,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-d0-8-ssm-gt.png
+id:57,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-b0-5-ssm-gt.png,path:./final/t3/5-b0-5-ssm-dist.png
+id:58,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-c0-1-tsne-gt.png,path:./final/t3/5-c0-1-tsne-dist.png
+id:59,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-b0-2-tsne-gt.png,path:./final/t3/5-b0-2-tsne-dist.png
+id:61,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-d0-7-ssm-gt.png,path:./final/t3/5-d0-7-ssm-dist.png
+id:62,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-d0-5-tsne-gt.png,path:./final/t3/5-d0-5-tsne-dist.png
+id:63,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-d0-6-tsne-gt.png,path:./final/t3/7-d0-6-tsne-dist.png
+id:65,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-c0-8-ssm-gt.png,path:./final/t3/5-c0-8-ssm-dist.png
+id:66,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-a0-8-tsne-gt.png,path:./final/t3/5-a0-8-tsne-dist.png
+id:68,type:struct,question:What is the data topology in RN ?,path:./final/t3/5-a0-6-ssm-gt.png,path:./final/t3/5-a0-6-ssm-dist.png
+id:69,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-a0-9-ssm-gt.png,path:./final/t3/7-a0-9-ssm-dist.png
+id:70,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-d0-1-ssm-gt.png,path:./final/t3/7-d0-1-ssm-dist.png
+id:72,type:struct,question:What is the data topology in RN ?,path:./final/t3/7-a0-6-tsne-gt.png,path:./final/t3/7-a0-6-tsne-dist.png
+id:0,type:compare,question:Task T4 - Count the number of outliers in a given group,ans:I am ready,cd:skip
+id:73,type:count,question:How many outliers are there in the red group ?,path:./final/t4/5-a5-0-ssm-gt.png
+id:74,type:count,question:How many outliers are there in the blue group ?,path:./final/t4/5-a8-2-tsne-gt.png
+id:75,type:count,question:How many outliers are there in the red group ?,path:./final/t4/7-a12-2-ssm-gt.png
+id:76,type:count,question:How many outliers are there in the blue group ?,path:./final/t4/5-a1-2-tsne-gt.png
+id:77,type:count,question:How many outliers are there in the green group ?,path:./final/t4/7-a5-1-ssm-gt.png
+id:78,type:count,question:How many outliers are there in the orange group ?,path:./final/t4/5-a3-2-tsne-gt.png
+id:79,type:count,question:How many outliers are there in the green group ?,path:./final/t4/5-a3-2-ssm-gt.png
+id:80,type:count,question:How many outliers are there in the red group ?,path:./final/t4/7-a14-2-tsne-gt.png
+id:81,type:count,question:How many outliers are there in the orange group ?,path:./final/t4/5-a8-0-ssm-gt.png
+id:82,type:count,question:How many outliers are there in the blue group ?,path:./final/t4/7-a12-1-tsne-gt.png

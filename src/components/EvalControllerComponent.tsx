@@ -7,7 +7,7 @@ import { QuestionComponent } from "./QuestionComponent";
 import emailjs from '@emailjs/browser';
 import Cookies from 'universal-cookie';
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { LocaleManager } from "../LocaleManager";
+import { Locale, LocaleManager } from "../LocaleManager";
 
 
 interface IProps {
@@ -156,7 +156,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 firstReady: false,
                 ready: true,
                 displayCooldown: q.skipCD ? 0 : 2,
-                skipCooldown: q.skipCD ? 0 : 63,
+                skipCooldown: q.skipCD ? 0 : 62,
             });
         console.log(q)
             // setTimeout(() => this.offCooldown(this), 3000)
@@ -236,6 +236,10 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 {/* <div className="control-proceed" onClick={() => this.endIntro(this)}>Commencer</div> */}
             </Container>
         } else if (this.ended) {
+            let link = "https://docs.google.com/forms/d/e/1FAIpQLScSkqhEBLtNV2CCk0TT8LrZM3W3O7OPaAgObjzlxvwXYa6cOA/viewform?usp=pp_url&entry.472158829=" + cookies.get("id");
+            if (LocaleManager.currentLocale == Locale.English) {
+                link = "https://docs.google.com/forms/d/e/1FAIpQLScUAs3sG1dTHrfbx4PED8K9z2wltB4ZXf_Rho3wjTGbQKqNlg/viewform?usp=pp_url&entry.472158829=" + cookies.get("id");
+            }
             const blob = new Blob([this.props.evalController.getResultsAsString(true)]);                   // Step 3
             const fileDownloadUrl = URL.createObjectURL(blob);
             return <Container fluid style={{maxWidth:"1200px"}} className="d-block gap-5 flex-fill mh-100">
@@ -245,7 +249,7 @@ export class EvalControllerComponent extends React.Component<IProps, IState> {
                 <Row className="justify-content-center d-grid flex-fill">
                     <Col className="col-auto">
                     {LocaleManager.getText("end-2")}
-                    <a target="_blank" href={"https://docs.google.com/forms/d/e/1FAIpQLScSkqhEBLtNV2CCk0TT8LrZM3W3O7OPaAgObjzlxvwXYa6cOA/viewform?usp=pp_url&entry.472158829=" + cookies.get("id")}>https://forms.gle/YtbcbCtS8RbNUeou6</a>. {LocaleManager.getText("end-3")}{cookies.get("id")}.<br/>
+                    <a target="_blank" href={link}>Google Form</a>. {LocaleManager.getText("end-3")}{cookies.get("id")}.<br/>
                     </Col>
                 </Row>
                 <Row className="justify-content-center d-grid">

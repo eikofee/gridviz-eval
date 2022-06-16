@@ -41,19 +41,19 @@ export class TrainingComponent extends React.Component<IProps, IState> {
     public hasWrongAnswer = false;
 
     public frenchQuestions : LocaleQuestions = {
-        "t1":`id:1,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,expect:violet
-        id:2,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,expect:bleu
+        "t1":`id:1,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-0-ssm-gt.png,expect:purple
+        id:2,type:color4,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/4-a-1-tsne-gt.png,expect:blue
         id:3,type:color5,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/5-c-3-tsne-gt.png,expect:orange
         id:4,type:color8,question:Quel est l'étiquette de groupe la plus représentée ?,path:./train/t2/8-a-0-ssm-gt.png,expect:orange`,
-        "t2":`id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:bleu,out:violet
-        id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:violet,out:bleu
-        id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:vert,out:orange
-        id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:marron,out:vert`,
-        "t3":`id:2,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:partagé
-        id:4,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bulle
-        id:8,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:proche
-        id:6,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mélange`,
-        "t4":`id:1,type:count,question:Combien y'a-t-il d'intrus dans le groupe violet ?,path:./train/t5/4-a-1-ssm-gt.png,expect:4
+        "t2":`id:6,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./train/t3/5-d-0-tsne-gt.png,path:./train/t3/5-d-0-tsne-dist.png,expect:blue,out:purple
+        id:7,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./train/t3/5-d-3-ssm-gt.png,path:./train/t3/5-d-3-ssm-dist.png,expect:purple,out:blue
+        id:5,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./train/t3/5-b-0-ssm-gt.png,expect:green,out:orange
+        id:8,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:brown,out:green`,
+        "t3":`id:2,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:split
+        id:4,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bubble
+        id:8,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:close
+        id:6,type:struct,question:Quelle est la topologie des données dans RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mix`,
+        "t4":`id:1,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./train/t5/5-a5-2-ssm-gt.png,expect:5
         id:2,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./train/t5/5-a0.006-4-ssm-gt.png,expect:14
         id:3,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1
         id:4,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./train/t5/3-a0-0-tsne-gt.png,expect:0`
@@ -70,9 +70,9 @@ export class TrainingComponent extends React.Component<IProps, IState> {
         id:8,type:color7,question:Which group is closest to the green group in RN ?,path:./train/t3/7-b-0-tsne-gt.png,expect:brown,out:green`,
         "t3":`id:2,type:struct,question:What is the data topology in RN ?,path:./train/t4/4-a-2-tsne-gt.png,expect:split
         id:4,type:struct,question:What is the data topology in RN ?,path:./train/t4/5-b-3-ssm-gt.png,expect:bubble
-        id:8,type:struct,question:What is the data topology in RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:clone
+        id:8,type:struct,question:What is the data topology in RN ?,path:./train/t4/7-d-2-ssm-gt.png,path:./train/t4/7-d-2-ssm-dist.png,expect:close
         id:6,type:struct,question:What is the data topology in RN ?,path:./train/t4/7-c-1-tsne-gt.png,path:./train/t4/7-c-1-tsne-dist.png,expect:mix`,
-        "t4":`id:1,type:count,question:How many outliers are there in the purple group ?,path:./train/t5/4-a-1-ssm-gt.png,expect:4
+        "t4":`id:1,type:count,question:How many outliers are there in the blue group ?,path:./train/t5/5-a5-2-ssm-gt.png,expect:5
         id:2,type:count,question:How many outliers are there in the green group ?,path:./train/t5/5-a0.006-4-ssm-gt.png,expect:14
         id:3,type:count,question:How many outliers are there in the blue group ?,path:./train/t5/4-a-2-tsne-gt.png,expect:1
         id:4,type:count,question:How many outliers are there in the red group ?,path:./train/t5/3-a0-0-tsne-gt.png,expect:0`

@@ -76,7 +76,7 @@ export class LocaleManager {
             T4 : Compter le nombre d'intrus dans un groupe donné<br/><br/>
         </div>
         <div>
-            Ces tâches sont réparties en 82 questions. Les colorations utilisées diffèrent suivant les tâches proposées. Certaines questions sont volontairement difficiles et demandent donc du temps pour être répondues, vous disposez en revanche d'1 minute par question pour répondre.
+            Ces tâches sont réparties en 74 questions. Les colorations utilisées diffèrent suivant les tâches proposées. Certaines questions sont volontairement difficiles et demandent donc du temps pour être répondues, vous disposez en revanche d'1 minute par question pour répondre.
             A la fin du questionnaire, nous demanderons quelles stratégies vous aurez utilisé pour répondre aux questions.
             Répondre correctement est plus profitable que répondre rapidement, surtout pour la tâche T4. Aussi, il n'y aura pas d'intrus dans les données projetées pour les tâches T1 à T3.<br/>
             Nous allons à présent montrer comment répondre aux différentes tâches.
@@ -153,6 +153,10 @@ export class LocaleManager {
         "brown":"marron",
         "pink":"rose",
         "gray":"gris",
+        "split":"partagée",
+        "bubble":"bulle",
+        "mix":"mélange",
+        "close":"proche",
         "title-split":"'Partagée' : Les groupes sont plus ou moins écartés les uns des autres dans R^N",
         "title-bubble":"'Bulle' : Il y a au moins un groupe positionné à l’intérieur d’un autre sans se mélanger ou se superposer dans R^N",
         "title-mix":"'Mélange' : Il y a au moins deux groupes qui se mélangent ou se superposent dans R^N",
@@ -176,7 +180,7 @@ export class LocaleManager {
         "intro-5": "intro/fr/struct-overview.png",
         "intro-6-1":"intro/tsneGT-out.png",
         "intro-6-2": "intro/ssmGT-out.png",
-        "legend": "./intro/legend.png"
+        "legend": "./intro/fr/legend.png"
     }
 
     public static englishLocale : LocaleEntry = {
@@ -195,26 +199,25 @@ export class LocaleManager {
         Specifically, we evaluate the effectiveness of two representations for tasks commonly performed when visualizing such data.
         We will visualize several datasets during this evaluation, and each item is assigned a label.</div>,
         "intro-0-2":<div>
-        The two projection methods evaluated are (1) a non-linear projection method on a continuous space 
-         <TeX>{`\\mathbb{R}^2`}</TeX> continuous that we will call "classical projection" (top on the diagram) and a method that projects on a grid in discrete space <TeX>{`\\mathbb{N}^2`}</TeX> which we will call "compact projection" (below on the diagram).
+        The two projection methods evaluated are (1) a non-linear projection method on a continuous space <TeX>{`\\mathbb{R}^2`}</TeX> that we will call "classical projection" (top on the diagram) and (2) a method that projects on a grid in discrete space <TeX>{`\\mathbb{N}^2`}</TeX> which we will call "compact projection" (below on the diagram).
          Both projections ensure that the dataset is represented in such a way that elements that are close in <TeX>{`\\mathbb{R}^N`}</TeX> are also close in the 2D view.</div>,
         "intro-1-1":<div>In these two methods, each square represents an element of the projected dataset.
-        In addition to the two projection methods, we also propose two colorations of these squares.</div>,
+        In addition to the two projection methods, we also propose two colorings of these squares.</div>,
         "intro-1-2":<div>The first one concerns the labels: each label in the dataset is assigned a distinct color from the others.
         Each element is then colored in relation to its label.
 The meaning behind the labels does not matter in this evaluation, but to distinguish between two elements in relation to their label is important.</div>,
-        "intro-2-1":<div>The second concerns the proximity of elements in <TeX>{`\mathbb{R}^N`}</TeX>. Its purpose is to give hints about the topology of elements in <TeX>{`\mathbb{R}^N`}</TeX> based on the neighborhood of elements in <TeX>{`\mathbb{R}^2`}</TeX>.</div>,
-        "intro-2-2":<div>This coloring is computed in two steps. The first is to retrieve the neighbors of each element from the <TeX>{`\mathbb{R}^2`}</TeX> projection.
+        "intro-2-1":<div>The second concerns the proximity of elements in <TeX>{`\\mathbb{R}^N`}</TeX>. Its purpose is to give hints about the topology of elements in <TeX>{`\\mathbb{R}^N`}</TeX> based on the neighborhood of elements in <TeX>{`\\mathbb{R}^2`}</TeX>.</div>,
+        "intro-2-2":<div>This coloring is computed in two steps. The first is to retrieve the neighbors of each element from the <TeX>{`\\mathbb{R}^2`}</TeX> projection.
         The neighborhood of an element <TeX>e</TeX> corresponds to the nearest elements in each angular sector around <TeX>e</TeX>.
         Here, we consider 8 angular sectors to compute the neighborhood.</div>,
         "intro-3-1": <div>After determining the neighborhood <TeX>V(e)</TeX> of an element <TeX>e</TeX>, we compute the average of the distances <TeX>{'\\overline{d}=\\frac{\\sum_{k \\in V(e)}|e-k|}{8}'}</TeX> between <TeX>e</TeX> and its neighbors <TeX>k \in V(e)</TeX>. A color is assigned to the square to represent this value.
-        The color scale is not linear, but in general, short distances in <TeX>{`\mathbb{R}^N`}</TeX> are represented by the color yellow/green and long distances are represented by the color dark green/dark blue.
+        The color scale is not linear, but in general, short distances in <TeX>{`\\mathbb{R}^N`}</TeX> are represented by the color yellow/green and long distances are represented by the color dark green/dark blue.
         For each projection using this coloring method, the color scale will be given in the legend.</div>,
-        "intro-3-2": <div>Among other things, this coloring allows us to compare the proximity of two elements, and thus to represent part of the data topology of <TeX>{`\mathbb{R}^N`}</TeX> on a <TeX>{`\mathbb{R}^2`}</TeX> projection. For example, in this case :</div>,
-        "intro-3-3":<div>We seek to determine the closest group to <TeX>B</TeX>. We therefore compare the color of the elements in <TeX>B</TeX> that form the boundary with <TeX>A</TeX> and <TeX>C</TeX> to find out the distance between them. The elements representing the distance <TeX>{'d_{AB}'}</TeX> are dark blue in color and those representing the distance <TeX>{'d_{BC}'}</TeX> are green. Therefore, we can conclude that in <TeX>{`\mathb{R}^N`}</TeX>, the <TeX>B</TeX> group is closer to the <TeX>C</TeX> group than the <TeX>A</TeX> group.</div>,
-        "intro-4":<div>Another example of use but this time using the grid view, we again try to find which group is closer to <TeX>B</TeX>. We compare the colors of the boundaries with <TeX>A</TeX> and <TeX>C</TeX> to find the one that indicates a short distance to <TeX>B</TeX>. The elements of the distance <TeX>{'d_{AB}'}</TeX> are dark blue in color and those representing the distance <TeX>{'d_{BC}'}</TeX> are green in color. Therefore, we can conclude that in <TeX>{`\mathb{R}^N`}</TeX>, the <TeX>B</TeX> group is closer to the <TeX>C</TeX> group than the <TeX>A</TeX> group.</div>,
-        "intro-5-1":<div>
-        In this evaluation, we generate datasets in <TeX>{`\mathbb{R}^N`}</TeX> that follow particular topologies and characteristics.
+        "intro-3-2": <div>Among other things, this coloring allows us to compare the proximity of two elements, and thus to represent part of the data topology of <TeX>{`\\mathbb{R}^N`}</TeX> on a <TeX>{`\\mathbb{R}^2`}</TeX> projection. For example, in this case :</div>,
+        "intro-3-3":<div>We seek to determine the closest group to <TeX>B</TeX>. We therefore compare the color of the elements in <TeX>B</TeX> that form the boundary with <TeX>A</TeX> and <TeX>C</TeX> to find out the distance between them. The elements representing the distance <TeX>{'d_{AB}'}</TeX> are dark blue in color and those representing the distance <TeX>{'d_{BC}'}</TeX> are green. Therefore, we can conclude that in <TeX>{`\\mathbb{R}^N`}</TeX>, the <TeX>B</TeX> group is closer to the <TeX>C</TeX> group than the <TeX>A</TeX> group.</div>,
+        "intro-4":<div>Another example of use but this time using the grid view, we again try to find which group is closer to <TeX>B</TeX>. We compare the colors of the boundaries with <TeX>A</TeX> and <TeX>C</TeX> to find the one that indicates a short distance to <TeX>B</TeX>. The elements of the distance <TeX>{'d_{AB}'}</TeX> are dark blue in color and those representing the distance <TeX>{'d_{BC}'}</TeX> are green in color. Therefore, we can conclude that in <TeX>{`\\mathbb{R}^N`}</TeX>, the <TeX>B</TeX> group is closer to the <TeX>C</TeX> group than the <TeX>A</TeX> group.</div>,
+        "intro-5-1":<div> 
+        In this evaluation, we generate datasets in <TeX>{`\\mathbb{R}^N`}</TeX> that follow particular topologies and characteristics.
         In this case, we generate 4 types of topological structures:
         <ul>
             <li>The first one, called "split", is formed by groups more or less separated from each other.</li>
@@ -238,7 +241,7 @@ The meaning behind the labels does not matter in this evaluation, but to disting
             T4: Count the number of outliers in a given group<br/><br/>
         </div>
         <div>
-        These tasks are divided into 82 questions. The coloring used differs according to the tasks proposed. Some questions are deliberately difficult and therefore require time to answer, but you have 1 minute per question to answer.
+        These tasks are divided into 74 questions. The coloring used differs according to the tasks proposed. Some questions are deliberately difficult and therefore require time to answer, but you have 1 minute per question to answer.
             At the end of the evaluation, we will ask what strategies you used to answer the questions in a survey.
             Answering correctly is more beneficial than answering quickly, especially for task T4. Also, there will be no intruders in the projected data for tasks T1 to T3.<br/>
             We will now explain how to answer to the different tasks.
@@ -256,8 +259,8 @@ The meaning behind the labels does not matter in this evaluation, but to disting
 
 For this task, we will consider that the generated data will consist of either 5 or 7 groups for each question.
     Some questions will have only the label coloring, others will offer both colorings on the screen.<br/>
-    You will need to designate the closest group in <TeX>{`\mathbb{R}^N`}</TeX> to the one designated by its color.
-    When only label coloring is offered, you should look for clues showing that the groups are close in <TeX>{`\mathb{R}^N`}</TeX>.
+    You will need to designate the closest group in <TeX>{`\\mathbb{R}^N`}</TeX> to the one designated by its color.
+    When only label coloring is offered, you should look for clues showing that the groups are close in <TeX>{`\\mathbb{R}^N`}</TeX>.
     In the case of the classic view, elements can be brought together, or even overlap with another group to indicate their proximity in <TeX>{`\\mathbb{R}^N`}</TeX>.
     In the case of the grid view, the elements are sorted by proximity. The shape of the borders can also indicate the proximity of a group: more vertical borders indicate a greater distance between the two groups.</div>,
     "intro-10-2":<div>When both colorings are proposed, the color of the border between two groups on the distance coloring provides additional information on the structure of the data in <TeX>{`\\mathbb{R}^N`}</TeX>.
@@ -269,7 +272,7 @@ For this task, we will consider that the generated data will consist of either 5
     For this task, we will consider that the generated data will consist of either 5 or 7 groups for each question.
     Some questions will have only the label coloring, others will offer both colorings on the screen.<br/>
 
-    The goal of this task is to find the topology of the data in <TeX>{`\mathbb{R}^N`}</TeX> using the proposed projection.
+    The goal of this task is to find the topology of the data in <TeX>{`\\mathbb{R}^N`}</TeX> using the proposed projection.
     Each topology will be represented by a diagram.
     Their meaning can be recalled by passing the mouse cursor without clicking over the diagram.
     If you hesitate between several answers, choose the topology that you think is best represented on the visualization.
@@ -278,7 +281,7 @@ For this task, we will consider that the generated data will consist of either 5
     "intro-12-2":<span>"Split": The groups are more or less separated from each other in <TeX>{`\\mathbb{R}^N`}</TeX> : </span>,
     "intro-12-3":<span>"Bubble": There is at least one group positioned inside another without mixing or overlapping in <TeX>{`\\mathbb{R}^N`}</TeX> : </span>,
     "intro-12-4":<span>"Mix": There are at least two groups that mix or overlap in <TeX>{`\\mathbb{R}^N`}</TeX> : </span>,
-    "intro-12-5":<span>"Close": there are at least two groups that are significantly closer to each other in <TeX>{`\mathbb{R}^N`}</TeX> than the others: </span>,
+    "intro-12-5":<span>"Close": there are at least two groups that are significantly closer to each other in <TeX>{`\\mathbb{R}^N`}</TeX> than the others: </span>,
     "intro-14":<div>
     <b>T4: Count the number of outliers in a given group</b><br/><br/>
     For this task, we will consider that there are either 5 or 7 groups for each question.
@@ -314,6 +317,10 @@ For this task, we will consider that the generated data will consist of either 5
         "brown":"brown",
         "pink":"pink",
         "gray":"gray",
+        "split":"split",
+        "bubble":"bubble",
+        "mix":"mix",
+        "close":"close",
         "title-split":"'Split' : Groups are more or less separated from each other in R^N",
         "title-bubble":"'Bubble' : There is at least one group positioned within another without mixing or overlapping in R^N",
         "title-mix":"'Mix' : There are at least two groups that mix or overlap in R^N",
@@ -328,7 +335,16 @@ For this task, we will consider that the generated data will consist of either 5
     }
 
     public static englishPath: LocaleTextOnly = {
-        "intro-1": "intro/en/pipeline-proj.png"
+        "intro-0": "intro/en/pipeline-proj.png",
+        "intro-1": "intro/en/pipeline-col.png",
+        "intro-2-1": "intro/en/pipeline-dist.png",
+        "intro-2-2": "intro/en/knn.png",
+        "intro-3": "intro/en/dist-usage-tsne.png",
+        "intro-4": "intro/en/dist-usage-ssm.png",
+        "intro-5": "intro/en/struct-overview.png",
+        "intro-6-1":"intro/tsneGT-out.png",
+        "intro-6-2": "intro/ssmGT-out.png",
+        "legend": "./intro/en/legend.png"
     }
     
     public static getText(id: string) {

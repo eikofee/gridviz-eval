@@ -2,6 +2,7 @@ import { Answer, AnswerType } from "./Answer";
 import { Question } from "./Question";
 import { QuestionComponent } from "../components/QuestionComponent";
 import { EvalControllerComponent } from "../components/EvalControllerComponent";
+import { Locale, LocaleManager } from "../LocaleManager";
 
 export class AnsweredQuestion {
     question: Question;
@@ -102,7 +103,11 @@ export class EvalController {
 
     public loadQuestionsFromFile() {
         console.log("reading questions")
-        fetch("./eval-final.csv")
+        let path = "./eval-final.csv";
+        if (LocaleManager.currentLocale == Locale.English) {
+            path = "./eval-final-en.csv"
+        }
+        fetch(path)
             .then(r => r.text().then(text => {
                 console.log("calling once");
                 this.loadQuestionsFromFileFinish(text, this.evalControllerComponent!);

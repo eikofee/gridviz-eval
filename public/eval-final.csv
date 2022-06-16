@@ -16,30 +16,30 @@ id:14,type:color3,question:Quel est le groupe le plus représenté ?,path:./fina
 id:15,type:color8,question:Quel est le groupe le plus représenté ?,path:./final/t1/8-a0-6-ssm-gt.png
 id:16,type:color8,question:Quel est le groupe le plus représenté ?,path:./final/t1/8-a0-9-tsne-gt.png
 id:0,type:compare,question:Tâche T2 - Trouver quel groupe est plus proche d’un autre dans RN,ans:Je suis prêt(e),cd:skip
-id:17,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-2-ssm-gt.png,out:violet
-id:18,type:color5,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/5-d0-6-tsne-gt.png,out:vert
-id:19,type:color7,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/7-c0-3-tsne-gt.png,out:violet
-id:20,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-d0-0-ssm-gt.png,out:vert
-id:21,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-5-tsne-gt.png,out:bleu
-id:22,type:color7,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/7-b0-4-ssm-gt.png,out:violet
-id:23,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-b0-0-ssm-gt.png,out:bleu
-id:24,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-c0-9-tsne-gt.png,out:bleu
+id:17,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-2-ssm-gt.png,out:purple
+id:18,type:color5,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/5-d0-6-tsne-gt.png,out:green
+id:19,type:color7,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/7-c0-3-tsne-gt.png,out:purple
+id:20,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-d0-0-ssm-gt.png,out:green
+id:21,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-5-tsne-gt.png,out:blue
+id:22,type:color7,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/7-b0-4-ssm-gt.png,out:purple
+id:23,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-b0-0-ssm-gt.png,out:blue
+id:24,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-c0-9-tsne-gt.png,out:blue
 id:25,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-9-tsne-gt.png,out:orange
-id:26,type:color7,question:Quel est le groupe le plus proche du groupe marron dans RN ?,path:./final/t2/7-c0-6-ssm-gt.png,out:marron
-id:27,type:color5,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/5-d0-4-ssm-gt.png,out:rouge
+id:26,type:color7,question:Quel est le groupe le plus proche du groupe marron dans RN ?,path:./final/t2/7-c0-6-ssm-gt.png,out:brown
+id:27,type:color5,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/5-d0-4-ssm-gt.png,out:red
 id:28,type:color7,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/7-b0-6-tsne-gt.png,out:orange
-id:29,type:color7,question:Quel est le groupe le plus proche du groupe jaune dans RN ?,path:./final/t2/7-b0-2-ssm-gt.png,path:./final/t2/7-b0-2-ssm-dist.png,out:jaune
-id:30,type:color7,question:Quel est le groupe le plus proche du groupe marron dans RN ?,path:./final/t2/7-c0-4-tsne-gt.png,path:./final/t2/7-c0-4-tsne-dist.png,out:marron
-id:31,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-c0-5-tsne-gt.png,path:./final/t2/5-c0-5-tsne-dist.png,out:bleu
+id:29,type:color7,question:Quel est le groupe le plus proche du groupe jaune dans RN ?,path:./final/t2/7-b0-2-ssm-gt.png,path:./final/t2/7-b0-2-ssm-dist.png,out:yellow
+id:30,type:color7,question:Quel est le groupe le plus proche du groupe marron dans RN ?,path:./final/t2/7-c0-4-tsne-gt.png,path:./final/t2/7-c0-4-tsne-dist.png,out:brown
+id:31,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-c0-5-tsne-gt.png,path:./final/t2/5-c0-5-tsne-dist.png,out:blue
 id:32,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-5-ssm-gt.png,path:./final/t2/5-b0-5-ssm-dist.png,out:orange
-id:33,type:color7,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/7-c0-9-ssm-gt.png,path:./final/t2/7-c0-9-ssm-dist.png,out:rouge
-id:34,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-d0-4-ssm-gt.png,path:./final/t2/7-d0-4-ssm-dist.png,out:vert
-id:35,type:color5,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/5-d0-3-ssm-gt.png,path:./final/t2/5-d0-3-ssm-dist.png,out:rouge
-id:36,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-d0-5-tsne-gt.png,path:./final/t2/5-d0-5-tsne-dist.png,out:bleu
+id:33,type:color7,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/7-c0-9-ssm-gt.png,path:./final/t2/7-c0-9-ssm-dist.png,out:red
+id:34,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-d0-4-ssm-gt.png,path:./final/t2/7-d0-4-ssm-dist.png,out:green
+id:35,type:color5,question:Quel est le groupe le plus proche du groupe rouge dans RN ?,path:./final/t2/5-d0-3-ssm-gt.png,path:./final/t2/5-d0-3-ssm-dist.png,out:red
+id:36,type:color5,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/5-d0-5-tsne-gt.png,path:./final/t2/5-d0-5-tsne-dist.png,out:blue
 id:37,type:color5,question:Quel est le groupe le plus proche du groupe orange dans RN ?,path:./final/t2/5-b0-6-tsne-gt.png,path:./final/t2/5-b0-6-tsne-dist.png,out:orange
-id:38,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-6-ssm-gt.png,path:./final/t2/5-c0-6-ssm-dist.png,out:violet
-id:39,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-8-tsne-gt.png,path:./final/t2/7-d0-8-tsne-dist.png,out:bleu
-id:40,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-b0-7-tsne-gt.png,path:./final/t2/7-b0-7-tsne-dist.png,out:vert
+id:38,type:color5,question:Quel est le groupe le plus proche du groupe violet dans RN ?,path:./final/t2/5-c0-6-ssm-gt.png,path:./final/t2/5-c0-6-ssm-dist.png,out:purple
+id:39,type:color7,question:Quel est le groupe le plus proche du groupe bleu dans RN ?,path:./final/t2/7-d0-8-tsne-gt.png,path:./final/t2/7-d0-8-tsne-dist.png,out:blue
+id:40,type:color7,question:Quel est le groupe le plus proche du groupe vert dans RN ?,path:./final/t2/7-b0-7-tsne-gt.png,path:./final/t2/7-b0-7-tsne-dist.png,out:green
 id:0,type:compare,question:Tâche T3 - Trouver la topologie des données dans RN,ans:Je suis prêt(e),cd:skip
 id:41,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-5-tsne-gt.png
 id:42,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-4-ssm-gt.png
@@ -66,13 +66,13 @@ id:69,type:struct,question:Quelle est la topologie des données dans RN ?,path:.
 id:70,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-d0-1-ssm-gt.png,path:./final/t3/7-d0-1-ssm-dist.png
 id:72,type:struct,question:Quelle est la topologie des données dans RN ?,path:./final/t3/7-a0-6-tsne-gt.png,path:./final/t3/7-a0-6-tsne-dist.png
 id:0,type:compare,question:Tâche T4 - Trouver le nombre d'intrus dans les données,ans:Je suis prêt(e),cd:skip
-id:73,type:count,question:Combien y'a-t-il d'intrus dans le groupe orange ?,path:./final/t4/5-a0.006-4-ssm-gt.png
-id:74,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/8-a0.006-7-ssm-gt.png
-id:75,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/7-a0.006-8-tsne-gt.png
-id:76,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./final/t4/4-a0.006-1-tsne-gt.png
-id:77,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/8-a0.006-1-tsne-gt.png
-id:78,type:count,question:Combien y'a-t-il d'intrus dans le groupe violet ?,path:./final/t4/4-a0.006-7-ssm-gt.png
-id:79,type:count,question:Combien y'a-t-il d'intrus dans le groupe jaune ?,path:./final/t4/6-a0.006-3-tsne-gt.png
-id:80,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/5-a0.006-7-tsne-gt.png
-id:81,type:count,question:Combien y'a-t-il d'intrus dans le groupe orange ?,path:./final/t4/7-a0.006-3-ssm-gt.png
-id:82,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/6-a0.006-8-ssm-gt.png
+id:73,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./final/t4/5-a5-0-ssm-gt.png
+id:74,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/5-a8-2-tsne-gt.png
+id:75,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./final/t4/7-a12-2-ssm-gt.png
+id:76,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/5-a1-2-tsne-gt.png
+id:77,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/7-a5-1-ssm-gt.png
+id:78,type:count,question:Combien y'a-t-il d'intrus dans le groupe orange ?,path:./final/t4/5-a3-2-tsne-gt.png
+id:79,type:count,question:Combien y'a-t-il d'intrus dans le groupe vert ?,path:./final/t4/5-a3-2-ssm-gt.png
+id:80,type:count,question:Combien y'a-t-il d'intrus dans le groupe rouge ?,path:./final/t4/7-a14-2-tsne-gt.png
+id:81,type:count,question:Combien y'a-t-il d'intrus dans le groupe orange ?,path:./final/t4/5-a8-0-ssm-gt.png
+id:82,type:count,question:Combien y'a-t-il d'intrus dans le groupe bleu ?,path:./final/t4/7-a12-1-tsne-gt.png
