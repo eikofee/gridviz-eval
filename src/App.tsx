@@ -6,7 +6,7 @@ import { EvalController } from './types/EvalController';
 
 
 function App() {
-  LocaleManager.currentLocale = Locale.French;
+  LocaleManager.currentLocale = Locale.English;
   let ec = new EvalController();
   return (
         <EvalControllerComponent evalController={ec} />

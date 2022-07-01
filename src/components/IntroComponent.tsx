@@ -40,7 +40,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
         })
 
         let cookies = new Cookies()
-        cookies.set("currentSlide", ic.state.page + 1, {maxAge: 86400})
+        cookies.set("currentSlide", ic.state.page + 1, {maxAge: 86400, path: '/'})
     }
     
     prevPage(ic: IntroComponent) {
@@ -49,7 +49,7 @@ export class IntroComponent extends React.Component<IProps, IState> {
         })
 
         let cookies = new Cookies()
-        cookies.set("currentSlide", ic.state.page - 1, {maxAge: 86400})
+        cookies.set("currentSlide", ic.state.page - 1, {maxAge: 86400, path: '/'})
     }
 
     skipToEnd(ic : IntroComponent) {

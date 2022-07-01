@@ -1,5 +1,6 @@
 import { Alert } from "react-bootstrap";
 import TeX from '@matejmazur/react-katex';
+import { isUndefined } from "util";
 
 
 export enum Locale {
@@ -360,26 +361,38 @@ For this task, we will consider that the generated data will consist of either 5
     }
 
     public static getPath(id: string) {
+        let ans = "";
         switch (this.currentLocale) {
             case Locale.French:
-                return this.frenchPath[id];
+                ans = this.frenchPath[id];
                 break;
             default:
-                return this.englishPath[id];
+                ans = this.englishPath[id];
                 break;
 
         }
+        if (ans === undefined) {
+            ans = id;
+        }
+
+        return ans;
     }
 
     public static getAnswerText(id: string) {
+        let ans = "";
         switch (this.currentLocale) {
             case Locale.French:
-                return this.frenchAnswers[id];
+                ans = this.frenchAnswers[id];
                 break;
             default:
-                return this.englishAnswers[id];
+                ans = this.englishAnswers[id];
                 break;
 
         }
+        if (ans === undefined) {
+            ans = id;
+        }
+
+        return ans;
     }
 }
